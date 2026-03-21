@@ -630,4 +630,60 @@ blockquote {
         word-wrap: break-word;
         hyphens: auto;             /* Додавати переноси (опціонально) */
     }
+
+    @media (max-width: 768px) {
+        /* 1. Забороняємо будь-який вихід за межі екрана */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+    
+        .container {
+            padding: 0 15px;
+            width: 100%;
+            box-sizing: border-box; /* Важливо! */
+        }
+    
+        /* 2. Робимо навігацію вертикальною */
+        .navbar .container {
+            flex-direction: column;
+            gap: 15px;
+        }
+    
+        /* 3. Головна колонка та сайдбар стають в один ряд */
+        .articles-layout {
+            grid-template-columns: 1fr !important; /* Тільки одна колонка */
+            gap: 20px;
+            padding: 20px 0;
+        }
+    
+        /* 4. ВИПРАВЛЕННЯ СІТКИ (те, що на скрині) */
+        .sub-grid {
+            grid-template-columns: 1fr !important; /* Картки стають одна під одною */
+            width: 100%;
+        }
+    
+        /* 5. Виправляємо картки, щоб не "тиснули" на стінки */
+        .feature-card, .compact-card {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    
+        /* Зменшуємо картинку, щоб вона не займала весь екран */
+        .card-image-container {
+            height: 200px;
+        }
+    
+        /* Зменшуємо шрифти, щоб вони не розривали блоки */
+        .feature-card h2 {
+            font-size: 1.4rem;
+        }
+    
+        .hero h1 {
+            font-size: 1.8rem;
+        }
+    }
 }
