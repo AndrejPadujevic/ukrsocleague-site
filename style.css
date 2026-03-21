@@ -534,7 +534,15 @@ h1, h2, h3, h4 {
 
 /* 2. Основний запит для смартфонів та планшетів */
 @media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden; /* Забороняємо боковий скрол */
+        height: auto;
+    }
     
+    .hero {
+        min-height: auto; /* Прибираємо обмеження по висоті */
+        padding-bottom: 30px;
+    }
     .container {
         padding: 0 15px;
         width: 100%;
@@ -542,8 +550,48 @@ h1, h2, h3, h4 {
 
     /* Навігація: лого зверху, кнопки в ряд під ним */
     .navbar .container {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row; /* Повертаємо в рядок */
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 15px;
+    }
+
+    .logo {
+        font-size: 1.2rem; /* Трохи менше лого, щоб влізло */
+    }
+
+    nav ul {
+        margin: 0;
+        gap: 8px; /* Зменшуємо відстань між кнопками */
+    }
+
+    .btn-join, .btn-message {
+        padding: 6px 10px; /* Компактніші кнопки */
+        font-size: 0.8rem;
+    }
+
+    .hero-btns {
+        display: flex;
+        flex-direction: row; /* Ставимо в рядок */
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .hero-btns .btn-primary, .hero-btns .btn-secondary {
+        flex: 1; /* Кнопки однакової ширини */
+        max-width: 150px;
+        padding: 10px 5px;
+        font-size: 0.9rem;
+        margin: 0;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem !important; /* Зменшуємо, щоб влізло в один рядок */
+        line-height: 1.3;
+        white-space: normal; /* Дозволяє перенос, але тільки між словами */
         text-align: center;
     }
 
