@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Українська Соціалістична Ліга</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container">
+        <a class="logo">УСЛ</a>
+        <nav>
+            <ul>
+                <li><a href="#" id="about-trigger" class="btn-join">Про нас</a></li>
+                <li><a href="#" id="contact-trigger" class="btn-message">Зв'язок</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="side-overlay" class="side-overlay"></div>
+
+    <div id="side-panel" class="side-panel">
+        <div class="side-panel-header">
+            <h3>Про нас</h3>
+            <button id="close-panel" class="close-btn">&times;</button>
+        </div>
+        <div class="side-panel-content">
+            <a href="views.htm" class="side-btn">Наші погляди</a>
+            <a href="history.htm" class="side-btn">Історія</a>
+            <a href="https://tradeunion.org.ua/" class="side-btn">Профспілка "Захист Праці"</a>
+            <a href="https://lis-isl.org/en/" class="side-btn">Міжнародна Соціалістична Ліга</a>
+        </div>
+    </div>
+
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Зв'яжіться з нами</h1>
+                <button id="close-modal" class="close-btn">&times;</button>
+            </div>
+            <form action="https://formspree.io/f/mojkzeao" method="POST" class="contact-form">
+                <label>Ваше ім'я:</label>
+                <input type="text" name="name" required placeholder="Як до вас звертатися?">
+                
+                <label>Ваш Email або Telegram:</label>
+                <input type="text" name="contact" required placeholder="Контакт для відповіді">
+                
+                <label>Повідомлення:</label>
+                <textarea name="message" required placeholder="Ваше запитання чи пропозиція..."></textarea>
+                
+                <button type="submit" class="btn-send">Надіслати</button>
+            </form>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1>Українська <span>Соціалістична</span> Ліга</h1>
+            <h2>За права робітників, <br><span>за соціальну справедливість!</span></h2>
+            <p>Наші сторінки:</p>
+            <div class="hero-btns">
+                <a href="https://t.me/ukrsocLeague" class="btn-primary">Телеграм</a>
+                <a href="https://substack.com/@ukrsocleague" class="btn-secondary">Substack</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="articles-layout container">
+    <div class="main-column">
+        <article class="feature-card">
+            <a href="articles/isl_feminism1.htm" style="text-decoration: none; color: inherit; display: block;">
+                <div class="card-image-container">
+                    <img src="pictures/ISL_feminism1.jpg" alt="3-й Конгрес МСЛ" class="feature-img">
+                </div> 
+                <div class="card-content">
+                    <span class="tag">Останнє</span>
+                    <h2>3-й Конгрес МСЛ(ISL): За антикапіталістичний, революційний та інтернаціоналістський фемінізм</h2>
+                    <p>Міжнародний контекст та четверта феміністична хвиля</p>
+                    <div class="meta">8 Березня, 2026</div>
+                </div>
+            </a>
+        </article>
+
+
+        <article class="feature-card">
+            <a href="articles/Isl_ecologia1.htm" style="text-decoration: none; color: inherit; display: block;">
+                <div class="card-image-container">
+                    <img src="pictures/ISL_ecologia1.jpg" alt="3-й Конгрес МСЛ" class="feature-img">
+                </div> 
+                <div class="card-content">
+                    <span class="tag">Останнє</span>
+                    <h2>Резолюція 3-го Конгресу МСЛ: Випробування нашої епохи</h2>
+                    <p>Соціально-екологічна криза, революція і соціалістичний перехід</p>
+                    <div class="meta">11 Березня, 2026</div>
+                </div>
+            </a>
+        </article>
+
+    </div>
+
+    <aside class="sidebar">
+        <h3 class="sidebar-title">Старіші новини</h3>
+        <div class="sub-grid">
+            <a href="articles/andriy_richickij.htm" style="text-decoration: none; color: inherit; display: block; width: 100%;">
+                <article class="compact-card">
+                    <span class="tag">Останнє</span>
+                    <h4>Андрій Річицький: інтелектуал, що хотів примирити соціалістичну перспективу із волею України</h4>
+                </article>
+            </a>
+        </div>
+        <ul class="news-list">
+            <li>
+                <span class="date">4 Березня, 2026</span>
+                <a href="#">Війна в Ірані. Нова фаза імперіалістичної бійні.</a>
+            </li>
+            <li>
+                <span class="date">27 Січня, 2026</span>
+                <a href="#">Багатопартійність чи однопартійність?</a>
+            </li>
+            <li>
+                <span class="date">23 Січня, 2026</span>
+                <a href="#">Руки геть від Рожави!</a>
+            </li>
+        </ul>
+    </aside>
+</section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Українська Соціалістична Ліга. Солідарність назавжди.</p>
+    </div>
+</footer>
+
+
+    <li><a href="#" id="about-trigger">Про нас</a></li>
+
+    <script>
+        const trigger = document.getElementById('about-trigger');
+        const panel = document.getElementById('side-panel');
+        const overlay = document.getElementById('side-overlay');
+        const closeBtn = document.getElementById('close-panel');
+
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            panel.classList.add('open');
+            overlay.classList.add('active');
+        });
+
+        const closeMenu = () => {
+            panel.classList.remove('open');
+            overlay.classList.remove('active');
+        };
+
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+
+        const contactTrigger = document.getElementById('contact-trigger');
+        const contactModal = document.getElementById('contact-modal');
+        const closeModal = document.getElementById('close-modal');
+
+        if (contactTrigger) {
+            contactTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // 1. Показываем контейнер (display: flex)
+                contactModal.style.display = 'flex';
+                
+                // 2. Через минимальную задержку запускаем анимацию через класс active
+                setTimeout(() => {
+                    contactModal.classList.add('active');
+                }, 10); 
+            });
+        }
+
+        const hideModal = () => {
+            // 1. Убираем класс active (окно начинает угасать)
+            contactModal.classList.remove('active');
+            
+            // 2. Ждем окончания анимации (400ms) и полностью скрываем контейнер
+            setTimeout(() => {
+                contactModal.style.display = 'none';
+            }, 400);
+        };
+
+        if (closeModal) {
+            closeModal.addEventListener('click', hideModal);
+        }
+
+        // Закрытие при клике на темный фон
+        window.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                hideModal();
+            }
+        });
+    </script>
+    
+</body>
+</html>
