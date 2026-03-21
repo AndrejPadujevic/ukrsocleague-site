@@ -532,11 +532,34 @@ blockquote {
 
 
 
-/*телефони */
+/* --- МОБІЛЬНА АДАПТИВНІСТЬ --- */
 
-/* Покращена адаптивність для мобільних пристроїв */
+/* 1. Загальні виправлення для всіх екранів (захист від скролу) */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box; /* Щоб падінги не розпирали блоки */
+}
+
+h1, h2, h3, h4 {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* 2. Основний запит для смартфонів та планшетів */
 @media (max-width: 768px) {
-    /* 1. Навігація: логотип зверху, кнопки знизу */
+    
+    .container {
+        padding: 0 15px;
+        width: 100%;
+    }
+
+    /* Навігація: лого зверху, кнопки в ряд під ним */
     .navbar .container {
         flex-direction: column;
         gap: 15px;
@@ -547,50 +570,85 @@ blockquote {
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
+        padding: 0;
     }
 
-    /* 2. Зменшуємо висоту головного банера (Hero) */
+    /* Hero секція */
     .hero {
-        padding: 40px 0;
+        padding: 40px 10px;
     }
 
     .hero h1 {
-        font-size: 2rem; /* Менший шрифт для назви */
+        font-size: 1.8rem;
     }
 
-    /* 3. Картки статей: прибираємо фіксовану висоту зображень */
-    .card-image-container {
-        height: 250px; /* На мобілках 450px — це забагато */
+    /* Кнопки в Hero ставимо одна під одною, якщо не влазять */
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
     }
 
-    .feature-card h2 {
-        font-size: 1.5rem; /* Зменшуємо заголовки статей */
+    .btn-primary, .btn-secondary {
+        margin: 0;
+        width: 100%;
+        max-width: 280px;
     }
 
-    /* 4. Колонки: робимо все в одну лінію */
+    /* СІТКА СТАТЕЙ: все в одну колонку */
     .articles-layout {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: 1fr !important;
         padding-top: 20px;
     }
 
-    /* 5. Сайдбар та сітки */
+    /* Велика картка */
+    .feature-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 0 20px 0 !important;
+    }
+
+    .card-image-container {
+        height: 220px; /* Оптимально для мобілки */
+    }
+
+    .feature-card h2 {
+        font-size: 1.4rem;
+    }
+
+    /* Сітка малих карток (sub-grid) */
     .sub-grid {
-        grid-template-columns: 1fr; /* Картки в сайдбарі одна під одною */
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+        width: 100%;
     }
 
     .compact-card {
-        max-width: 100%; /* Картка на всю ширину екрану */
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
     }
 
-    /* 6. Модальне вікно (Зв'язок) */
+    /* Сайдбар (старі новини) */
+    .sidebar {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    /* Модальне вікно (Зв'язок) */
     .modal-content {
-        width: 95%;
+        width: 92%;
         padding: 20px;
         margin: 10px;
     }
 }
 
-/* Додатково для дуже маленьких екранів (iPhone SE тощо) */
+/* 3. Додатково для дуже маленьких екранів */
 @media (max-width: 480px) {
     .logo {
         font-size: 1.2rem;
@@ -598,92 +656,9 @@ blockquote {
     
     nav a {
         font-size: 0.8rem;
-        padding: 5px 10px;
     }
 
-    .container {
-        padding: 0 15px;    /* Маленькі відступи по боках, щоб текст не лип до краю */
-        width: 100%;
-        overflow: hidden;    /* Забороняємо вихід контенту за межі */
-    }
-
-    .articles-layout {
-        display: flex;       /* Перемикаємо сітку на гнучкий блок */
-        flex-direction: column; /* Ставимо все в один стовпчик */
-    }
-
-    /* Якщо зображення в новинах все одно велике */
-    .feature-img, .card-image-container {
-        max-width: 100%;
-        width: 100%;
-        height: auto;        /* Дозволяємо висоті підлаштовуватися під ширину */
-    }
-
-    .compact-card, .feature-card {
-        width: 100%;        /* Займатиме всю ширину, що є */
-        max-width: 100%;     /* Ні в якому разі не виходити за межі батьківського блоку */
-        box-sizing: border-box; /* Щоб внутрішні відступи (padding) не розширювали картку */
-    }
-
-    h1, h2, h3, h4 {
-        overflow-wrap: break-word; /* Розривати довгі слова, якщо вони не вміщуються */
-        word-wrap: break-word;
-        hyphens: auto;             /* Додавати переноси (опціонально) */
-    }
-
-    @media (max-width: 768px) {
-        /* 1. Забороняємо будь-який вихід за межі екрана */
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-        }
-    
-        .container {
-            padding: 0 15px;
-            width: 100%;
-            box-sizing: border-box; /* Важливо! */
-        }
-    
-        /* 2. Робимо навігацію вертикальною */
-        .navbar .container {
-            flex-direction: column;
-            gap: 15px;
-        }
-    
-        /* 3. Головна колонка та сайдбар стають в один ряд */
-        .articles-layout {
-            grid-template-columns: 1fr !important; /* Тільки одна колонка */
-            gap: 20px;
-            padding: 20px 0;
-        }
-    
-        /* 4. ВИПРАВЛЕННЯ СІТКИ (те, що на скрині) */
-        .sub-grid {
-            grid-template-columns: 1fr !important; /* Картки стають одна під одною */
-            width: 100%;
-        }
-    
-        /* 5. Виправляємо картки, щоб не "тиснули" на стінки */
-        .feature-card, .compact-card {
-            width: 100% !important;
-            max-width: 100% !important;
-            box-sizing: border-box;
-            margin-left: 0;
-            margin-right: 0;
-        }
-    
-        /* Зменшуємо картинку, щоб вона не займала весь екран */
-        .card-image-container {
-            height: 200px;
-        }
-    
-        /* Зменшуємо шрифти, щоб вони не розривали блоки */
-        .feature-card h2 {
-            font-size: 1.4rem;
-        }
-    
-        .hero h1 {
-            font-size: 1.8rem;
-        }
+    .hero h1 {
+        font-size: 1.6rem;
     }
 }
