@@ -600,4 +600,34 @@ blockquote {
         font-size: 0.8rem;
         padding: 5px 10px;
     }
+
+    .container {
+        padding: 0 15px;    /* Маленькі відступи по боках, щоб текст не лип до краю */
+        width: 100%;
+        overflow: hidden;    /* Забороняємо вихід контенту за межі */
+    }
+
+    .articles-layout {
+        display: flex;       /* Перемикаємо сітку на гнучкий блок */
+        flex-direction: column; /* Ставимо все в один стовпчик */
+    }
+
+    /* Якщо зображення в новинах все одно велике */
+    .feature-img, .card-image-container {
+        max-width: 100%;
+        width: 100%;
+        height: auto;        /* Дозволяємо висоті підлаштовуватися під ширину */
+    }
+
+    .compact-card, .feature-card {
+        width: 100%;        /* Займатиме всю ширину, що є */
+        max-width: 100%;     /* Ні в якому разі не виходити за межі батьківського блоку */
+        box-sizing: border-box; /* Щоб внутрішні відступи (padding) не розширювали картку */
+    }
+
+    h1, h2, h3, h4 {
+        overflow-wrap: break-word; /* Розривати довгі слова, якщо вони не вміщуються */
+        word-wrap: break-word;
+        hyphens: auto;             /* Додавати переноси (опціонально) */
+    }
 }
