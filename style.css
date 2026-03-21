@@ -695,44 +695,57 @@ h1, h2, h3, h4 {
 
 
 
+/* Кнопки швидкої навігації (як у Telegram) */
 #scroll-nav {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+    position: fixed !important; /* ЗАВЖДИ на екрані */
+    bottom: 30px; /* Відступ знизу */
+    right: 20px;  /* Відступ справа */
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    z-index: 1000;
+    gap: 12px;
+    z-index: 99999 !important; /* Поверх усього */
 }
 
 #scroll-nav button {
-    width: 45px;
-    height: 45px;
-    background-color: #e63946; /* Твій фірмовий червоний */
+    width: 50px; /* Трохи більші для зручності пальців */
+    height: 50px;
+    background-color: #e63946;
     color: white;
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    opacity: 0; /* Спочатку вони невидимі */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    
+    /* Анімація появи */
+    opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transform: translateY(20px); /* Виїжджатиме знизу */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Ефект при наведенні */
-#scroll-nav button:hover {
-    background-color: #333;
-    transform: scale(1.1);
-}
-
-/* Клас, який ми будемо додавати через JS */
+/* Коли кнопка активна */
 #scroll-nav button.show {
-    opacity: 0.7;
+    opacity: 0.85;
     visibility: visible;
+    transform: translateY(0);
 }
 
 #scroll-nav button.show:hover {
     opacity: 1;
+    background-color: #333;
+}
+
+/* Адаптація для мобілок (щоб не перекривали контент) */
+@media (max-width: 768px) {
+    #scroll-nav {
+        bottom: 20px;
+        right: 15px;
+    }
+    #scroll-nav button {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
 }
