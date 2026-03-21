@@ -691,3 +691,48 @@ h1, h2, h3, h4 {
         font-size: 1.6rem;
     }
 }
+
+
+
+
+#scroll-nav {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+#scroll-nav button {
+    width: 45px;
+    height: 45px;
+    background-color: #e63946; /* Твій фірмовий червоний */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0; /* Спочатку вони невидимі */
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Ефект при наведенні */
+#scroll-nav button:hover {
+    background-color: #333;
+    transform: scale(1.1);
+}
+
+/* Клас, який ми будемо додавати через JS */
+#scroll-nav button.show {
+    opacity: 0.7;
+    visibility: visible;
+}
+
+#scroll-nav button.show:hover {
+    opacity: 1;
+}
