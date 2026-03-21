@@ -529,3 +529,75 @@ blockquote {
         font-size: 1.1rem;
     }
 }
+
+
+
+/*телефони */
+
+/* Покращена адаптивність для мобільних пристроїв */
+@media (max-width: 768px) {
+    /* 1. Навігація: логотип зверху, кнопки знизу */
+    .navbar .container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* 2. Зменшуємо висоту головного банера (Hero) */
+    .hero {
+        padding: 40px 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem; /* Менший шрифт для назви */
+    }
+
+    /* 3. Картки статей: прибираємо фіксовану висоту зображень */
+    .card-image-container {
+        height: 250px; /* На мобілках 450px — це забагато */
+    }
+
+    .feature-card h2 {
+        font-size: 1.5rem; /* Зменшуємо заголовки статей */
+    }
+
+    /* 4. Колонки: робимо все в одну лінію */
+    .articles-layout {
+        grid-template-columns: 1fr;
+        padding-top: 20px;
+    }
+
+    /* 5. Сайдбар та сітки */
+    .sub-grid {
+        grid-template-columns: 1fr; /* Картки в сайдбарі одна під одною */
+    }
+
+    .compact-card {
+        max-width: 100%; /* Картка на всю ширину екрану */
+    }
+
+    /* 6. Модальне вікно (Зв'язок) */
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+        margin: 10px;
+    }
+}
+
+/* Додатково для дуже маленьких екранів (iPhone SE тощо) */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    nav a {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+}
