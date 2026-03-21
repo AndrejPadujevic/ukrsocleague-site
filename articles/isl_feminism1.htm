@@ -336,31 +336,6 @@
         <button id="scroll-to-top" title="Вгору">↑</button>
         <button id="scroll-to-bottom" title="Вниз">↓</button>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const btnTop = document.getElementById("scroll-to-top");
-            const btnBottom = document.getElementById("scroll-to-bottom");
-        
-            window.onscroll = function() {
-                let scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-                let windowHeight = document.documentElement.scrollHeight - window.innerHeight;
-        
-                if (scrollPos > 300) {
-                    btnTop.classList.add("show");
-                } else {
-                    btnTop.classList.remove("show");
-                }
-        
-                if (scrollPos < windowHeight - 300) {
-                    btnBottom.classList.add("show");
-                } else {
-                    btnBottom.classList.remove("show");
-                }
-            };
-        
-            btnTop.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
-            btnBottom.onclick = () => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
