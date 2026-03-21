@@ -396,11 +396,6 @@ footer {
 }
 
 /* Форма */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
 
 .contact-form input, .contact-form textarea {
     padding: 10px;
