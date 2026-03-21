@@ -397,6 +397,12 @@ footer {
 
 /* Форма */
 
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .contact-form input, .contact-form textarea {
     padding: 10px;
     border: 1px solid #ccc;
@@ -609,7 +615,6 @@ h1, h2, h3, h4 {
     /* Кнопки в Hero ставимо одна під одною, якщо не влазять */
     .hero-btns {
         display: flex;
-        flex-direction: column;
         gap: 10px;
         align-items: center;
     }
