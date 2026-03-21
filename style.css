@@ -262,15 +262,6 @@ footer {
     text-align: center;
 }
 
-/* Адаптив для мобилок */
-@media (max-width: 768px) {
-    .articles-layout {
-        grid-template-columns: 1fr;
-    }
-    .sub-grid {
-        grid-template-columns: 1fr;
-    }
-}
 
 
 .card-image-container {
@@ -518,16 +509,6 @@ blockquote {
     margin-top: 50px;
     padding-top: 20px;
     border-top: 1px solid #eee;
-}
-
-/* Адаптивность */
-@media (max-width: 600px) {
-    .article-header h1 {
-        font-size: 2rem;
-    }
-    .article-content {
-        font-size: 1.1rem;
-    }
 }
 
 
