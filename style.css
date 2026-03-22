@@ -790,18 +790,22 @@ h1, h2, h3, h4 {
 
 
 
+/* Основний контейнер хедера (вже має display: flex) */
 .header-nav {
     display: flex;
     align-items: center;
     justify-content: space-between; /* Розносить кнопку і лого по різних боках */
     padding: 10px 20px;
+    background: #fff; /* Твій фон хедера */
+    border-bottom: 2px solid var(--primary-red); /* Твоя червона лінія */
 }
 
+/* --- СТИЛІ КНОПКИ ПОВЕРНЕННЯ (зліва) --- */
 .back-button {
     text-decoration: none;
-    color: var(--primary-red); /* Використовуємо твій червоний колір */
+    color: var(--primary-red); /* Твій червоний колір */
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     display: flex;
     align-items: center;
     transition: opacity 0.3s ease;
@@ -817,17 +821,27 @@ h1, h2, h3, h4 {
     font-size: 1.2rem;
 }
 
-.logoarticle {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: red;
-    letter-spacing: 1px;
+/* --- СТИЛІ ОНОВЛЕНОГО ЛОГОТИПУ (справа) --- */
+.logo-container {
+    display: flex;
+    align-items: center;
 }
 
-/* На мобільних можна залишити тільки стрілочку, щоб зекономити місце */
-@media (max-width: 480px) {
-    .back-button span:not(.arrow) {
-        display: none; /* Сховає текст "На головну", залишивши стрілку */
+.logo-img {
+    height: 40px; /* Фіксуємо висоту логотипу, щоб хедер був охайним */
+    width: auto;   /* Ширина підлаштовується автоматично (не спотворює пропорції) */
+    display: block;
+    border: none;
+}
+
+/* --- АДАПТИВНІСТЬ (для мобільних) --- */
+@media (max-width: 600px) {
+    /* Ховаємо текст "На головну", залишаємо тільки стрілку ← */
+    .back-text {
+        display: none;
+    }
+    
+    .logo-img {
+        height: 35px; /* Трохи зменшуємо лого на маленьких екранах */
     }
 }
