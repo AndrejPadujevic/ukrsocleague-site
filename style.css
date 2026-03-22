@@ -888,5 +888,9 @@ article, main {
     /* Робимо третю кнопку на всю ширину обох стовпців */
     .hero-btns a:nth-child(3) {
         grid-column: span 2; 
+        flex: 0 1 100%;        /* Займає весь рядок */
+        max-width: 280px;      /* Обмежуємо ширину, щоб вона не була на весь екран */
+        text-align: center;
+        margin: 0 auto;        /* Додаткове центрування */
     }
 }
