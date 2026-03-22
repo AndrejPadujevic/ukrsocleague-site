@@ -825,6 +825,7 @@ h1, h2, h3, h4 {
 .logo-container {
     display: flex;
     align-items: center;
+    transform: scale(1.05);
 }
 
 .logo-img {
@@ -832,6 +833,8 @@ h1, h2, h3, h4 {
     width: auto;   /* Ширина підлаштовується автоматично (не спотворює пропорції) */
     display: block;
     border: none;
+    transition: transform 0.3s ease; /* Додамо ефект при наведенні */
+    cursor: pointer;
 }
 
 /* --- АДАПТИВНІСТЬ (для мобільних) --- */
