@@ -931,19 +931,27 @@ article, main {
 }
 
 .logo-link {
-    display: flex;
-    align-items: center; /* Вирівнює лого і текст по центру по вертикалі */
+    display: flex;         /* Вмикає режим рядка */
+    align-items: center;   /* Вирівнює текст по центру висоти логотипа */
     text-decoration: none; /* Прибирає підкреслення тексту */
-    gap: 10px; /* Робить невеликий відступ між картинкою і текстом */
+    gap: 15px;             /* Створює відступ між лого і текстом */
+}
+
+.logo-img {
+    height: 50px;          /* Або ваш поточний розмір */
+    width: auto;
+    display: block;
 }
 
 .logo-text {
-    color: #333; /* Колір твого тексту */
+    font-family: 'Inter', sans-serif;
     font-weight: bold;
+    color: #333;           /* Темно-сірий або чорний колір */
     font-size: 1.1rem;
+    transition: color 0.3s ease;
 }
 
-/* Ефект при наведенні */
+/* Ефект при наведенні для кращого UX */
 .logo-link:hover .logo-text {
-    color: #cc0000; /* Текст стає червоним, коли наводиш мишкою */
+    color: #cc0000;        /* Текст стає червоним при наведенні */
 }
