@@ -824,8 +824,10 @@ h1, h2, h3, h4 {
 /* --- СТИЛІ ОНОВЛЕНОГО ЛОГОТИПУ (справа) --- */
 .logo-container {
     display: flex;
-    align-items: center;
+    align-items: left;
     transform: scale(1.05);
+    position: relative;
+    left: -50px;
 }
 
 .logo-img {
