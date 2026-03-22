@@ -7,17 +7,13 @@
 }
 
 header {
-    display: flex;
-    justify-content: flex-start; /* Логотип зліва */
-    align-items: center;
-    padding: 15px 20px;
     width: 100%;
     background-color: #fff;
     border-bottom: 2px solid var(--primary-red);
-    box-sizing: border-box;
-    /* Гарантуємо, що він не буде перекриватися іншими блоками */
-    position: relative; 
-    z-index: 100;
+    padding: 20px 0; /* Відступи зверху і знизу */
+    display: flex;
+    flex-direction: column; /* Елементи будуть один під одним, якщо їх буде кілька */
+    align-items: center;    /* Центрування по горизонталі */
 }
 
 body {
@@ -837,12 +833,16 @@ h1, h2, h3, h4 {
 
 /* --- СТИЛІ ОНОВЛЕНОГО ЛОГОТИПУ (справа) --- */
 .logo-container {
-    display: block;
     align-items: left;
     transform: scale(1.05);
     position: relative;
     left: -50px;
     margin-left: 15px;
+    max-width: 1100px; /* Така ж ширина, як у твого тексту */
+    padding: 0 20px;   /* Відступи від країв екрана */
+    display: flex;
+    justify-content: flex-start; /* Логотип буде зліва, але в межах контенту */
+    box-sizing: border-box;
 }
 
 .logo-img {
