@@ -206,31 +206,41 @@ footer {
     width: 100%;
 }
 
+/* Контейнер для ряду статей */
 .articles-row {
     display: flex;
-    flex-wrap: wrap; /* Щоб на телефонах вони перестрибували один під одного */
-    gap: 20px;       /* Відступ між картками */
-    justify-content: flex-start; /* Вирівнювання по лівому краю */
-    margin-bottom: 30px;
+    flex-direction: row; /* Вишикувати в ряд */
+    flex-wrap: wrap;     /* Дозволити перенос на телефонах */
+    gap: 20px;           /* Відступ між колонками */
+    width: 100%;
+    margin-top: 20px;
 }
 
-/* Налаштування для посилання-обгортки */
+/* Стиль посилання-обгортки */
 .article-link {
     text-decoration: none;
     color: inherit;
-    display: flex; /* Важливо для однакової висоти */
-    flex: 1 1 calc(50% - 20px); /* Займати 50% ширини мінус відступ */
-    min-width: 300px; /* Мінімальна ширина, щоб на вузьких екранах не стискалося в кашу */
+    /* На великих екранах займає трохи менше половини (враховуючи gap) */
+    flex: 1 1 calc(50% - 10px); 
+    display: flex; /* Щоб картка всередині тягнулася */
 }
 
+/* Налаштування для мобільних (щоб знову стали один під одним) */
+@media (max-width: 768px) {
+    .article-link {
+        flex: 1 1 100%;
+    }
+}
+
+/* Коригуємо саму картку */
 .compact-card {
     padding: 20px;
     background: #f9f9f9;
     border-top: 3px solid var(--primary-red);
-    width: 100%;
-    /* Прибираємо max-width: 350px, щоб вони заповнювали виділене місце рівномірно */
+    width: 100%; /* Тепер вона розтягується по ширині посилання */
     display: flex;
     flex-direction: column;
+    box-sizing: border-box; /* Щоб падінги не роздували ширину */
 }
 
 .compact-card h4 {
