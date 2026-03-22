@@ -8,12 +8,16 @@
 
 header {
     display: flex;
+    justify-content: flex-start; /* Логотип зліва */
     align-items: center;
-    padding: 10px 20px; /* 10px зверху/знизу, 20px зліва/справа */
-    background-color: #ffffff; /* або твій колір */
-    border-bottom: 2px solid var(--primary-red);
+    padding: 15px 20px;
     width: 100%;
-    box-sizing: border-box; /* Важливо: щоб відступи не розширювали екран */
+    background-color: #fff;
+    border-bottom: 2px solid var(--primary-red);
+    box-sizing: border-box;
+    /* Гарантуємо, що він не буде перекриватися іншими блоками */
+    position: relative; 
+    z-index: 100;
 }
 
 body {
@@ -833,7 +837,7 @@ h1, h2, h3, h4 {
 
 /* --- СТИЛІ ОНОВЛЕНОГО ЛОГОТИПУ (справа) --- */
 .logo-container {
-    display: flex;
+    display: block;
     align-items: left;
     transform: scale(1.05);
     position: relative;
