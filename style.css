@@ -206,17 +206,37 @@ footer {
     width: 100%;
 }
 
+.articles-row {
+    display: flex;
+    flex-wrap: wrap; /* Щоб на телефонах вони перестрибували один під одного */
+    gap: 20px;       /* Відступ між картками */
+    justify-content: flex-start; /* Вирівнювання по лівому краю */
+    margin-bottom: 30px;
+}
+
+/* Налаштування для посилання-обгортки */
+.article-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex; /* Важливо для однакової висоти */
+    flex: 1 1 calc(50% - 20px); /* Займати 50% ширини мінус відступ */
+    min-width: 300px; /* Мінімальна ширина, щоб на вузьких екранах не стискалося в кашу */
+}
+
 .compact-card {
     padding: 20px;
     background: #f9f9f9;
     border-top: 3px solid var(--primary-red);
     width: 100%;
-    max-width: 350px;
+    /* Прибираємо max-width: 350px, щоб вони заповнювали виділене місце рівномірно */
+    display: flex;
+    flex-direction: column;
 }
 
 .compact-card h4 {
     font-size: 1.1rem;
     margin: 10px 0;
+    line-height: 1.4;
 }
 
 /* Сайдбар */
