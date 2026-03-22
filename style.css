@@ -224,12 +224,16 @@ footer {
     /* На великих екранах займає трохи менше половини (враховуючи gap) */
     flex: 1 1 calc(50% - 10px); 
     display: flex; /* Щоб картка всередині тягнулася */
+    width: calc(50% - 10px); 
+    text-decoration: none;
+    display: block;
 }
 
 /* Налаштування для мобільних (щоб знову стали один під одним) */
 @media (max-width: 768px) {
     .article-link {
         flex: 1 1 100%;
+        width: 100%;
     }
 }
 
@@ -242,6 +246,7 @@ footer {
     display: flex;
     flex-direction: column;
     box-sizing: border-box; /* Щоб падінги не роздували ширину */
+    max-width: none; /* Щоб нічого не обмежувало статтю всередині її 50% */
 }
 
 .compact-card h4 {
