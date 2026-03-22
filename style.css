@@ -541,6 +541,15 @@ footer {
     margin-bottom: 30px;
 }
 
+@media (max-width: 600px) {
+    .lead {
+        font-size: 1rem;       /* Зменшуємо шрифт (можна 0.95rem) */
+        line-height: 1.4;      /* Трохи щільніший міжрядковий інтервал */
+        padding: 0 5px;        /* Додаткові мікро-відступи з боків */
+        word-wrap: break-word; /* Щоб довгі слова не вилазили за екран */
+    }
+}
+
 blockquote {
     font-size: 1.5rem;
     font-style: italic;
