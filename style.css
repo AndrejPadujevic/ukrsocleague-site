@@ -6,16 +6,6 @@
     --white: #ffffff;
 }
 
-header {
-    width: 100%;
-    background-color: #fff;
-    border-bottom: 2px solid var(--primary-red);
-    padding: 15px 0; /* Відступи зверху і знизу */
-    display: flex;
-    flex-direction: row; /* Елементи будуть один під одним, якщо їх буде кілька */
-    align-items: center;    /* Центрування по горизонталі */
-}
-
 body {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
