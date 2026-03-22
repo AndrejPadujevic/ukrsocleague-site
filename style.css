@@ -10,9 +10,9 @@ header {
     width: 100%;
     background-color: #fff;
     border-bottom: 2px solid var(--primary-red);
-    padding: 20px 0; /* Відступи зверху і знизу */
+    padding: 15px 0; /* Відступи зверху і знизу */
     display: flex;
-    flex-direction: column; /* Елементи будуть один під одним, якщо їх буде кілька */
+    flex-direction: row; /* Елементи будуть один під одним, якщо їх буде кілька */
     align-items: center;    /* Центрування по горизонталі */
 }
 
@@ -837,7 +837,7 @@ h1, h2, h3, h4 {
 
 /* --- СТИЛІ ОНОВЛЕНОГО ЛОГОТИПУ (справа) --- */
 .logo-container {
-    align-items: left;
+    align-items: center;
     transform: scale(1.05);
     position: relative;
     left: -50px;
@@ -847,6 +847,7 @@ h1, h2, h3, h4 {
     display: flex;
     justify-content: flex-start; /* Логотип буде зліва, але в межах контенту */
     box-sizing: border-box;
+    padding-left: 5%;
 }
 
 .logo-img {
@@ -875,4 +876,5 @@ article, main {
 
     .logo-container {
         margin-left: 40px
+        padding-left: 15px;
 }
