@@ -104,46 +104,6 @@
 
         closeBtn.addEventListener('click', closeMenu);
         overlay.addEventListener('click', closeMenu);
-
-
-        const contactTrigger = document.getElementById('contact-trigger');
-        const contactModal = document.getElementById('contact-modal');
-        const closeModal = document.getElementById('close-modal');
-
-        if (contactTrigger) {
-            contactTrigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // 1. Показываем контейнер (display: flex)
-                contactModal.style.display = 'flex';
-                
-                // 2. Через минимальную задержку запускаем анимацию через класс active
-                setTimeout(() => {
-                    contactModal.classList.add('active');
-                }, 10); 
-            });
-        }
-
-        const hideModal = () => {
-            // 1. Убираем класс active (окно начинает угасать)
-            contactModal.classList.remove('active');
-            
-            // 2. Ждем окончания анимации (400ms) и полностью скрываем контейнер
-            setTimeout(() => {
-                contactModal.style.display = 'none';
-            }, 400);
-        };
-
-        if (closeModal) {
-            closeModal.addEventListener('click', hideModal);
-        }
-
-        // Закрытие при клике на темный фон
-        window.addEventListener('click', (e) => {
-            if (e.target === contactModal) {
-                hideModal();
-            }
-        });
     </script>
     <div id="scroll-nav">
         <button id="scroll-to-top" title="Вгору">↑</button>
