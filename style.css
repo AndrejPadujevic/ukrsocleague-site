@@ -93,6 +93,7 @@ nav a {
     text-decoration: none;
     margin-right: 10px;
     font-weight: bold;
+    border-radius: 5px;
 }
 
 .btn-send {
@@ -117,6 +118,7 @@ nav a {
     padding: 11px 25px;
     text-decoration: none;
     font-weight: bold;
+    border-radius: 5px;
 }
 
 /* Сетка новостей */
