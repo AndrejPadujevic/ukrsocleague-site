@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Українська Соціалістична Ліга</title>
+    <meta name="google-site-verification" content="huYUy-jLczTg8JRC8gPj77VMDvX3RbNoNlWgocnUlfU" />
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+    <link rel="icon" href="https://ukrsocleague.org/pictures/favicon.ico" type="image/x-icon">
+
+    <meta name="description" content="Українська Соціалістична Ліга — боротьба за права робітників, соціальну справедливість та антикапіталістичну перспективу в Україні.">
+
+    <meta name="keywords" content="УСЛ, соціалізм, робітничий рух, Україна, ліві, солідарність, соціальна справедливість, Украина, Социализм, Социальная справеливость, Левые, Рабочее Движение">
+    
+    <meta property="og:title" content="Українська Соціалістична Ліга">
+    <meta property="og:description" content="Офіційний сайт УСЛ">
+    <meta property="og:image" content="https://ukrsocleague.org/pictures/preview.jpg">
+    <meta property="og:url" content="https://ukrsocleague.org/">
+    <link rel="canonical" href="https://ukrsocleague.org/">
+
+    <meta property="og:type" content="website">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="../pictures/logo.png" alt="Логотип УСЛ" class="logo-img">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" id="about-trigger" class="btn-join">Про нас</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="side-overlay" class="side-overlay"></div>
+
+    <div id="side-panel" class="side-panel">
+        <div class="side-panel-header">
+            <h3>Про нас</h3>
+            <button id="close-panel" class="close-btn">&times;</button>
+        </div>
+        <div class="side-panel-content">
+            <a href="views.htm" class="side-btn">Наші погляди</a>
+            <a href="history.htm" class="side-btn">Історія</a>
+            <a href="https://www.youtube.com/@ukr_soc_league" class="side-btn">УСЛ в YouTube</a>
+            <a href="https://tradeunion.org.ua/" class="side-btn">Профспілка "Захист Праці"</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1>Міжнародна <span>Соціалістична</span> Ліга</h1>
+        </div>
+    </section>
+  <div class="article-content">
+
+        <p><span style="font-weight: 400;">Українська Соціалістична Ліга є частиною Міжнародної Соціалістичної Ліги &ndash; революційного інтернаціоналу соціалістичних партій та організацій, що об'єднує борців з понад 30 країн на 5 континентах. МСЛ (ISL) рішуче виступає за повалення капіталізму, робітничий контроль, національно-визвольну боротьбу, фемінізм та екологізм. Секції МСЛ брали участь у багатьох повстаннях, мітингах, народних мобілізаціях від часу заснування у 2019 році. Нещодавно було проведено III Світовий Конгрес організації, на якому до інтернаціоналу доєдналося багато нових ініціатив, що майже подвоїло кількість країн, де присутня МСЛ.</span><span style="font-weight: 400;"><br /><br /></span></p>
+<p><span style="font-weight: 400;">Почитати про МСЛ детальніше можна за посиланнями:</span></p>
+<section class="hero">
+        <div class="container">
+            <div class="hero-btns">
+                <a href="https://uk.wikipedia.org/wiki/%D0%9C%D1%96%D0%B6%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%B0_%D1%81%D0%BE%D1%86%D1%96%D0%B0%D0%BB%D1%96%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B0_%D0%BB%D1%96%D0%B3%D0%B0_(2019)" class="btn-primary">Вікіпедія</a>
+                <a href="https://www.instagram.com/ligainternacionalsocialista/" class="btn-secondary">Інстаграм</a>
+                <a href="https://lis-isl.org/en/quienes-somos/" class="btn-primary">Офіційний сайт МСЛ</a>
+            </div>
+        </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Українська Соціалістична Ліга. Солідарність назавжди.</p>
+    </div>
+</footer>
+
+    <script>
+        const trigger = document.getElementById('about-trigger');
+        const panel = document.getElementById('side-panel');
+        const overlay = document.getElementById('side-overlay');
+        const closeBtn = document.getElementById('close-panel');
+
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            panel.classList.add('open');
+            overlay.classList.add('active');
+        });
+
+        const closeMenu = () => {
+            panel.classList.remove('open');
+            overlay.classList.remove('active');
+        };
+
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+
+        const contactTrigger = document.getElementById('contact-trigger');
+        const contactModal = document.getElementById('contact-modal');
+        const closeModal = document.getElementById('close-modal');
+
+        if (contactTrigger) {
+            contactTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // 1. Показываем контейнер (display: flex)
+                contactModal.style.display = 'flex';
+                
+                // 2. Через минимальную задержку запускаем анимацию через класс active
+                setTimeout(() => {
+                    contactModal.classList.add('active');
+                }, 10); 
+            });
+        }
+
+        const hideModal = () => {
+            // 1. Убираем класс active (окно начинает угасать)
+            contactModal.classList.remove('active');
+            
+            // 2. Ждем окончания анимации (400ms) и полностью скрываем контейнер
+            setTimeout(() => {
+                contactModal.style.display = 'none';
+            }, 400);
+        };
+
+        if (closeModal) {
+            closeModal.addEventListener('click', hideModal);
+        }
+
+        // Закрытие при клике на темный фон
+        window.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                hideModal();
+            }
+        });
+    </script>
+    <div id="scroll-nav">
+        <button id="scroll-to-top" title="Вгору">↑</button>
+        <button id="scroll-to-bottom" title="Вниз">↓</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
