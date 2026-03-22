@@ -892,5 +892,6 @@ article, main {
         max-width: 280px;      /* Обмежуємо ширину, щоб вона не була на весь екран */
         text-align: center;
         margin: 0 auto;        /* Додаткове центрування */
+        width: 70%;
     }
 }
