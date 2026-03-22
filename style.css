@@ -836,7 +836,7 @@ h1, h2, h3, h4 {
     padding: 0 20px;   /* Відступи від країв екрана */
     display: flex;
     justify-content: flex-start; /* Логотип буде зліва, але в межах контенту */
-    padding-left: 5%;
+    padding-left: 1%;
 }
 
 .logo-img {
