@@ -787,3 +787,39 @@ h1, h2, h3, h4 {
         font-size: 20px;
     }
 }
+
+
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Розносить кнопку і лого по різних боках */
+    padding: 10px 20px;
+}
+
+.back-button {
+    text-decoration: none;
+    color: var(--primary-red); /* Використовуємо твій червоний колір */
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.back-button:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+.back-button .arrow {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+/* На мобільних можна залишити тільки стрілочку, щоб зекономити місце */
+@media (max-width: 480px) {
+    .back-button span:not(.arrow) {
+        display: none; /* Сховає текст "На головну", залишивши стрілку */
+    }
+}
