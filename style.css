@@ -214,6 +214,7 @@ footer {
     gap: 20px;           /* Відступ між колонками */
     width: 100%;
     margin-top: 20px;
+    background-color: yellow;
 }
 
 /* Стиль посилання-обгортки */
