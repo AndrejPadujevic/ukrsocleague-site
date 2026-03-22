@@ -817,6 +817,14 @@ h1, h2, h3, h4 {
     font-size: 1.2rem;
 }
 
+.logoarticle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: red;
+    letter-spacing: 1px;
+}
+
 /* На мобільних можна залишити тільки стрілочку, щоб зекономити місце */
 @media (max-width: 480px) {
     .back-button span:not(.arrow) {
