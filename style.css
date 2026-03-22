@@ -6,6 +6,16 @@
     --white: #ffffff;
 }
 
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px; /* 10px зверху/знизу, 20px зліва/справа */
+    background-color: #ffffff; /* або твій колір */
+    border-bottom: 2px solid var(--primary-red);
+    width: 100%;
+    box-sizing: border-box; /* Важливо: щоб відступи не розширювали екран */
+}
+
 body {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
