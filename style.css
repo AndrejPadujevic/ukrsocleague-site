@@ -659,6 +659,8 @@ h1, h2, h3, h4 {
         display: flex;
         gap: 10px;
         align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .btn-primary, .btn-secondary {
@@ -866,4 +868,24 @@ article, main {
     .logo-container {
         padding-left: 15%;
 }
+    .hero-btns {
+        display: flex;
+        flex-wrap: wrap; /* Дозволяє елементам переходити на новий рядок */
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* Перші дві кнопки */
+    .hero-btns a:nth-child(1),
+    .hero-btns a:nth-child(2) {
+        flex: 1 1 45%; /* Займають майже половину ширини кожна */
+        font-size: 14px;
+        padding: 10px 5px;
+    }
+
+    /* Третя кнопка (Офіційний сайт) */
+    .hero-btns a:nth-child(3) {
+        flex: 1 1 100%; /* Займає весь рядок знизу */
+        text-align: center;
+    }
 }
