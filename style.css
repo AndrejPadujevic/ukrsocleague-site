@@ -246,6 +246,9 @@ footer {
     flex-direction: column;
     box-sizing: border-box; /* Щоб падінги не роздували ширину */
     max-width: none; /* Щоб нічого не обмежувало статтю всередині її 50% */
+    word-break: keep-all; 
+    overflow-wrap: break-word; 
+    font-size: 1rem;
 }
 
 .compact-card h4 {
