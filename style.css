@@ -869,23 +869,21 @@ article, main {
         padding-left: 15%;
 }
     .hero-btns {
-        display: flex;
-        flex-wrap: wrap; /* Дозволяє елементам переходити на новий рядок */
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Два рівні стовпці */
         gap: 10px;
     }
 
-    /* Перші дві кнопки */
-    .hero-btns a:nth-child(1),
-    .hero-btns a:nth-child(2) {
-        flex: 1 1 45%; /* Займають майже половину ширини кожна */
-        font-size: 14px;
-        padding: 10px 5px;
+    .hero-btns a {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px; /* Робить всі кнопки візуально однаковими */
     }
 
-    /* Третя кнопка (Офіційний сайт) */
+    /* Робимо третю кнопку на всю ширину обох стовпців */
     .hero-btns a:nth-child(3) {
-        flex: 1 1 100%; /* Займає весь рядок знизу */
-        text-align: center;
+        grid-column: span 2; 
     }
 }
