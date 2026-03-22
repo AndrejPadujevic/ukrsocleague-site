@@ -501,7 +501,7 @@ footer {
 
 @media (max-width: 600px) {
     .article-header h1 {
-        font-size: 1rem;       /* Зменшуємо шрифт (можна 0.95rem) */
+        font-size: 2rem;       /* Зменшуємо шрифт (можна 0.95rem) */
         line-height: 1.4;      /* Трохи щільніший міжрядковий інтервал */
         padding: 0 5px;        /* Додаткові мікро-відступи з боків */
         word-wrap: break-word; /* Щоб довгі слова не вилазили за екран */
@@ -552,7 +552,7 @@ footer {
 
 @media (max-width: 600px) {
     .lead {
-        font-size: 1rem;       /* Зменшуємо шрифт (можна 0.95rem) */
+        font-size: 2rem;       /* Зменшуємо шрифт (можна 0.95rem) */
         line-height: 1.4;      /* Трохи щільніший міжрядковий інтервал */
         padding: 0 5px;        /* Додаткові мікро-відступи з боків */
         word-wrap: break-word; /* Щоб довгі слова не вилазили за екран */
