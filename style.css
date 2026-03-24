@@ -43,6 +43,14 @@ body {
     letter-spacing: 1px;
 }
 
+.logo_white {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    letter-spacing: 1px;
+}
+
 nav ul {
     list-style: none;
     display: flex;
