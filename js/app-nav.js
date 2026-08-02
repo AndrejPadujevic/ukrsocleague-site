@@ -54,60 +54,18 @@
     fixRelativeHead();
 
     /* ============================================
-       DUAL MODE SYSTEM (Website vs Webapp Mode)
+       AUTO-DETECT MODE (Website vs Webapp Mode)
        ============================================ */
-    var KEY_MODE = 'usl-mode';
-
     function isStandalonePWA() {
         return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
                (window.navigator && window.navigator.standalone);
     }
 
-    function getMode() {
-        try {
-            var saved = localStorage.getItem(KEY_MODE);
-            if (saved === 'webapp' || saved === 'website') return saved;
-        } catch (e) {}
-        if (isStandalonePWA()) return 'webapp';
-        return window.innerWidth <= 768 ? 'webapp' : 'website';
-    }
-
-    function setMode(mode) {
-        try { localStorage.setItem(KEY_MODE, mode); } catch (e) {}
-        applyMode();
-    }
-
     function applyMode() {
-        var mode = getMode();
-        var isWebapp = mode === 'webapp';
+        var isWebapp = isStandalonePWA() || window.innerWidth <= 768;
         document.body.classList.toggle('mode-webapp', isWebapp);
         document.body.classList.toggle('mode-website', !isWebapp);
-
-        document.querySelectorAll('.nav-mode-btn, .side-mode-btn, .footer-mode-btn').forEach(function(btn) {
-            btn.setAttribute('aria-pressed', isWebapp ? 'true' : 'false');
-            if (btn.classList.contains('nav-mode-btn')) {
-                btn.textContent = isWebapp ? '★ Застосунок' : 'Застосунок';
-            } else if (btn.classList.contains('side-mode-btn')) {
-                btn.textContent = isWebapp ? 'Режим: Застосунок (Webapp)' : 'Режим: Сайт (Website)';
-            } else {
-                btn.textContent = isWebapp ? '★ Режим застосунку' : 'Увімкнути режим застосунку';
-            }
-        });
     }
-
-    window.USLMode = {
-        get: getMode,
-        set: setMode,
-        toggle: function() { setMode(getMode() === 'webapp' ? 'website' : 'webapp'); },
-        apply: applyMode
-    };
-
-    document.addEventListener('click', function(e) {
-        var btn = e.target && e.target.closest ? e.target.closest('.nav-mode-btn, .side-mode-btn, .footer-mode-btn') : null;
-        if (btn) {
-            window.USLMode.toggle();
-        }
-    });
 
     applyMode();
 

@@ -74,7 +74,6 @@
             '            ' + html + '\n' +
             '            <div class="side-menu-tools">\n' +
             '                ' + toolHtml + '\n' +
-            '                <button type="button" class="side-tool-btn side-mode-btn" data-tool="mode">Режим застосунку</button>\n' +
             '            </div>\n' +
             '            <div class="side-theme"></div>\n' +
             '            <div class="side-menu-contact">\n' +
@@ -132,7 +131,6 @@
             '        <p>&copy; 2026 Українська Соціалістична Ліга. Всі права захищені.</p>\n' +
             '        <p class="footer-slogan">' + SLOGAN_LEFT + '</p>\n' +
             '        <div class="footer-theme"></div>\n' +
-            '        <button type="button" class="footer-mode-btn">Застосунок</button>\n' +
             '    </div>';
     }
 
@@ -165,7 +163,6 @@
             '        <div class="nav-container">\n' +
             '            ' + navHtml() + '\n' +
             '            <button type="button" class="nav-search-btn" id="nav-search-btn" aria-label="Пошук по сайту">Пошук</button>\n' +
-            '            <button type="button" class="nav-mode-btn" id="nav-mode-btn" aria-label="Режим застосунку">Застосунок</button>\n' +
             '            <a href="#" class="nav-item dropdown-toggle">МЕНЮ ▼</a>\n' +
             '        </div>\n' +
             '    </nav>\n' +

@@ -40,6 +40,8 @@
         if (!main) return null;
         var h1 = document.querySelector('main.article-page h1, .page-title-container h1');
         if (!h1) return null;
+        // Don't add reading time on main page (homepage)
+        if (document.body.classList.contains('home-page') || window.location.pathname === '/' || window.location.pathname === '/index.html') return null;
         var words = (main.textContent || '').split(/\s+/).filter(function(w) { return w.length > 1; }).length;
         var minutes = Math.max(1, Math.round(words / 180));
         var span = h1.querySelector('.reading-time');
