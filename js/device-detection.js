@@ -107,10 +107,13 @@ function applyDeviceSettings() {
         body.classList.remove('reduced-motion');
     }
     
-    if (device.prefersDarkMode) {
-        body.classList.add('dark-mode-preferred');
-    } else {
-        body.classList.remove('dark-mode-preferred');
+    const manualTheme = window.USLTheme && window.USLTheme.isManual();
+    if (!manualTheme) {
+        if (device.prefersDarkMode) {
+            body.classList.add('dark-mode-preferred');
+        } else {
+            body.classList.remove('dark-mode-preferred');
+        }
     }
     
     if (device.isSlowConnection) {
@@ -284,6 +287,8 @@ function initDeviceDetection() {
     });
     
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        const manualTheme = window.USLTheme && window.USLTheme.isManual();
+        if (manualTheme) return;
         if (e.matches) {
             document.body.classList.add('dark-mode-preferred');
         } else {

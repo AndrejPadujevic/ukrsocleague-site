@@ -58,6 +58,13 @@
         var html = items.map(function(item) {
             return '<a href="' + item.href + '" class="side-nav-item">' + item.label + '</a>';
         }).join('\n            ');
+        var tools = [
+            { key: 'search', label: 'Пошук по сайту' },
+            { key: 'bookmarks', label: 'Закладки' }
+        ];
+        var toolHtml = tools.map(function(t) {
+            return '<button type="button" class="side-tool-btn" data-tool="' + t.key + '">' + t.label + '</button>';
+        }).join('\n            ');
         return '' +
             '        <div class="side-menu-header">\n' +
             '            <h3>МЕНЮ</h3>\n' +
@@ -65,6 +72,11 @@
             '        </div>\n' +
             '        <div class="side-menu-content">\n' +
             '            ' + html + '\n' +
+            '            <div class="side-menu-tools">\n' +
+            '                ' + toolHtml + '\n' +
+            '                <button type="button" class="side-tool-btn side-mode-btn" data-tool="mode">Режим застосунку</button>\n' +
+            '            </div>\n' +
+            '            <div class="side-theme"></div>\n' +
             '            <div class="side-menu-contact">\n' +
             '                <a href="mailto:azura@noleron.com" class="side-contact-link">azura@noleron.com</a>\n' +
             '                <a href="https://social.noleron.com/@ukrsocleague" class="side-contact-link">Fediverse</a>\n' +
@@ -105,9 +117,22 @@
             '            </div>\n' +
             '        </div>\n' +
             '    </div>\n' +
+            '    <div class="footer-newsletter">\n' +
+            '        <form class="newsletter-form" novalidate>\n' +
+            '            <label class="newsletter-label" for="newsletter-email">Розсилка УСЛ</label>\n' +
+            '            <div class="newsletter-row">\n' +
+            '                <input type="email" id="newsletter-email" class="newsletter-email" placeholder="email@example.com" autocomplete="email" required>\n' +
+            '                <button type="submit" class="newsletter-submit">Підписатися</button>\n' +
+            '            </div>\n' +
+            '            <input type="text" class="newsletter-hp" tabindex="-1" autocomplete="off" aria-hidden="true">\n' +
+            '            <p class="newsletter-msg" role="status"></p>\n' +
+            '        </form>\n' +
+            '    </div>\n' +
             '    <div class="footer-bottom">\n' +
             '        <p>&copy; 2026 Українська Соціалістична Ліга. Всі права захищені.</p>\n' +
             '        <p class="footer-slogan">' + SLOGAN_LEFT + '</p>\n' +
+            '        <div class="footer-theme"></div>\n' +
+            '        <button type="button" class="footer-mode-btn">Застосунок</button>\n' +
             '    </div>';
     }
 
@@ -139,6 +164,8 @@
             '    <nav class="main-nav">\n' +
             '        <div class="nav-container">\n' +
             '            ' + navHtml() + '\n' +
+            '            <button type="button" class="nav-search-btn" id="nav-search-btn" aria-label="Пошук по сайту">Пошук</button>\n' +
+            '            <button type="button" class="nav-mode-btn" id="nav-mode-btn" aria-label="Режим застосунку">Застосунок</button>\n' +
             '            <a href="#" class="nav-item dropdown-toggle">МЕНЮ ▼</a>\n' +
             '        </div>\n' +
             '    </nav>\n' +
@@ -233,12 +260,36 @@
         });
     }
 
+    // Webapp tool buttons (search, bookmarks) — wired lazily in case a module loads later
+    document.addEventListener('click', function(e) {
+        var toolBtn = e.target && e.target.closest ? e.target.closest('.side-tool-btn') : null;
+        if (toolBtn) {
+            if (toolBtn.dataset.tool === 'search' && window.SiteSearch) window.SiteSearch.open();
+            if (toolBtn.dataset.tool === 'bookmarks' && window.SiteSearch) window.SiteSearch.openBookmarks();
+            return;
+        }
+        if (e.target && e.target.closest && e.target.closest('#nav-search-btn') && window.SiteSearch) {
+            window.SiteSearch.open();
+        }
+    });
+
+    // Load the webapp feature modules, then the app-shell layer
+    ['config.js', 'supabase-client.js', 'theme.js', 'bookmarks.js', 'reader.js', 'search.js', 'engagement.js', 'votes.js', 'comments.js', 'article-widgets.js'].forEach(function(file) {
+        if (!document.querySelector('script[data-webapp="' + file + '"]')) {
+            var s = document.createElement('script');
+            s.src = BASE + 'js/' + file;
+            s.setAttribute('data-webapp', file);
+            s.async = false;
+            document.body.appendChild(s);
+        }
+    });
+
     // Load the app-shell layer (tab bar, SPA navigation, service worker, install prompt)
     if (!document.querySelector('script[data-app-nav]')) {
         var appNav = document.createElement('script');
         appNav.src = BASE + 'js/app-nav.js';
         appNav.setAttribute('data-app-nav', '');
-        appNav.defer = true;
+        appNav.async = false;
         document.body.appendChild(appNav);
     }
 })();

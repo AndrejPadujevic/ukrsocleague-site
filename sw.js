@@ -8,7 +8,7 @@
  */
 'use strict';
 
-var CACHE = 'usl-v2';
+var CACHE = 'usl-v3';
 
 var PRECACHE_URLS = [
   '/',
@@ -25,6 +25,15 @@ var PRECACHE_URLS = [
   '/js/article-widgets.js',
   '/js/archive-data.js',
   '/js/archive-init.js',
+  '/js/config.js',
+  '/js/supabase-client.js',
+  '/js/votes.js',
+  '/js/comments.js',
+  '/js/bookmarks.js',
+  '/js/reader.js',
+  '/js/theme.js',
+  '/js/search.js',
+  '/js/engagement.js',
   '/site.webmanifest',
   '/robots.txt',
   '/feed.xml',

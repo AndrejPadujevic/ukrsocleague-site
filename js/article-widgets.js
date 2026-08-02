@@ -8,14 +8,20 @@
 
     window.ArticleWidgets = {
         init: function() {
-            var main = document.querySelector('main.article-page article');
+            var main = document.querySelector('main.article-page article, main.article-page .article-content-simple');
             if (!main) return;
 
             var isArticleDir = /\/articles\//.test(window.location.pathname);
             var BASE = isArticleDir ? '../' : '';
             var pageUrl = window.location.href.split('#')[0].split('?')[0];
-            var titleEl = document.querySelector('h1');
+            var titleEl = document.querySelector('main.article-page h1, .page-title-container h1, h1');
             var title = titleEl ? titleEl.textContent.trim() : document.title;
+
+            function fediverseUrl() {
+                var cfg = window.USL_CONFIG || {};
+                var inst = cfg.FEDIVERSE_INSTANCE || 'https://social.noleron.com';
+                return inst.replace(/\/$/, '') + '/share?text=' + encodeURIComponent(title + '\n\n' + pageUrl);
+            }
 
             // ---- Idempotency: remove previously injected widgets ----
             var oldCrumbs = document.querySelector('.breadcrumbs');
@@ -68,7 +74,8 @@
             var links = [
                 { cls: 'share-telegram', href: 'https://t.me/share/url?url=' + encodeURIComponent(pageUrl) + '&text=' + encodeURIComponent(title), text: 'Telegram' },
                 { cls: 'share-facebook', href: 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl), text: 'Facebook' },
-                { cls: 'share-twitter', href: 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(pageUrl) + '&text=' + encodeURIComponent(title), text: 'X' }
+                { cls: 'share-twitter', href: 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(pageUrl) + '&text=' + encodeURIComponent(title), text: 'X' },
+                { cls: 'share-fediverse', href: fediverseUrl(), text: 'Mastodon' }
             ];
             links.forEach(function(l) {
                 var a = document.createElement('a');
@@ -88,6 +95,11 @@
             copy.textContent = 'Копіювати';
             share.appendChild(copy);
             main.appendChild(share);
+
+            // Bookmark toggle in the share row
+            if (window.Bookmarks) {
+                main.appendChild(window.Bookmarks.button(window.Bookmarks.currentArticleItem()));
+            }
 
             copy.addEventListener('click', function() {
                 function done(ok) {

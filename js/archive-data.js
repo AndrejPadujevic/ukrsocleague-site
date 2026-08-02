@@ -4,6 +4,7 @@
 var USL_ARCHIVE = [
     {
         url: "articles/temneprosvitnitstvo.htm",
+        minutes: 7,
         title: "Темне Просвітництво",
         date: "01 Серпня, 2026",
         tag: "Міжнародне",
@@ -12,6 +13,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/protestausl.htm",
+        minutes: 1,
         title: "Завдяки нашій спільній активності",
         date: "18 Липня, 2026",
         tag: "Україна",
@@ -20,6 +22,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/protest2.htm",
+        minutes: 1,
         title: "Народна Ініціатива",
         date: "17 Липня, 2026",
         tag: "Україна",
@@ -28,6 +31,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/protest1.htm",
+        minutes: 1,
         title: "Народна Ініціатива: Протест проти підвищення цін",
         date: "14 Липня, 2026",
         tag: "Україна",
@@ -36,6 +40,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/zbirka.htm",
+        minutes: 9,
         title: "Горизонт Революції",
         date: "13 Липня, 2026",
         tag: "Культура",
@@ -44,6 +49,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/gegemonia.htm",
+        minutes: 4,
         title: "Антоніо Грамші: Культурна Гегемонія",
         date: "6 Липня, 2026",
         tag: "Теорія",
@@ -52,6 +58,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/uslshumskyy.htm",
+        minutes: 5,
         title: "Олександр Шумський",
         date: "28 Червня, 2026",
         tag: "Історія",
@@ -60,6 +67,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/migracia1.htm",
+        minutes: 6,
         title: "Трудова міграція: спроба соціалістичного аналізу",
         date: "5 Червня, 2026",
         tag: "Аналіз",
@@ -68,6 +76,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/interview_artil.htm",
+        minutes: 22,
         title: "Діалоги українського троцькіста та українського анархіста",
         date: "22 Травня, 2026",
         tag: "Інтерв'ю",
@@ -76,6 +85,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/USL_grushevsky.htm",
+        minutes: 11,
         title: "Михайло Грушевський",
         date: "14 Травня, 2026",
         tag: "Історія",
@@ -84,6 +94,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/ukrresolucia.htm",
+        minutes: 15,
         title: "Резолюція 3-го Конгресу МСЛ",
         date: "30 Квітня, 2026",
         tag: "МСЛ",
@@ -92,6 +103,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/vasylchumak.htm",
+        minutes: 3,
         title: "Василь Чумак",
         date: "9 Квітня, 2026",
         tag: "Історія",
@@ -100,6 +112,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/radycalnemystectvo.htm",
+        minutes: 10,
         title: "Disco Elysium і ситуаціонізм",
         date: "2 Квітня, 2026",
         tag: "Культура",
@@ -108,6 +121,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/lis_msl_isl.htm",
+        minutes: 1,
         title: "Міжнародна Соціалістична Ліга",
         date: "22 Березня, 2026",
         tag: "МСЛ",
@@ -116,6 +130,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/rukyhetvidrozavi.htm",
+        minutes: 8,
         title: "Руки геть від Рожави!",
         date: "21 Березня, 2026",
         tag: "Солідарність",
@@ -124,6 +139,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/bahatopartijnistchyodnopartijnist.htm",
+        minutes: 4,
         title: "Багатопартійність чи Однопартійність?",
         date: "21 Березня, 2026",
         tag: "Теорія",
@@ -132,6 +148,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/vijnavirani.htm",
+        minutes: 19,
         title: "Війна в Ірані",
         date: "21 Березня, 2026",
         tag: "Міжнародне",
@@ -140,6 +157,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/gendernaresolucia.htm",
+        minutes: 12,
         title: "Гендерна Резолюція",
         date: "21 Березня, 2026",
         tag: "МСЛ",
@@ -148,6 +166,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/isl_feminism1.htm",
+        minutes: 41,
         title: "3-й Конгрес МСЛ: Фемінізм",
         date: "21 Березня, 2026",
         tag: "Фемінізм",
@@ -156,6 +175,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/andriy_richickij.htm",
+        minutes: 4,
         title: "Андрій Річицький",
         date: "21 Березня, 2026",
         tag: "Історія",
@@ -164,6 +184,7 @@ var USL_ARCHIVE = [
     },
     {
         url: "articles/Isl_ecologia1.htm",
+        minutes: 24,
         title: "Соціально-екологічна криза, революція і соціалістичний перехід",
         date: "21 Березня, 2026",
         tag: "Екологія",

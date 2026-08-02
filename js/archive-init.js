@@ -22,8 +22,11 @@
 
             var filters = document.getElementById('archive-filters');
             var searchInput = document.getElementById('archive-search');
+            var sortSelect = document.getElementById('archive-sort');
             var emptyMsg = document.getElementById('archive-empty');
             var activeTag = 'Всі';
+            var sortMode = sortSelect ? sortSelect.value : 'new';
+            var scores = {};
 
             // Idempotency: clear previously built controls
             if (filters) filters.innerHTML = '';
@@ -36,10 +39,22 @@
                 return haystack.indexOf(q) !== -1;
             }
 
+            function slugKey(url) {
+                return (url || '').split('/').pop().replace(/\.html?$/i, '');
+            }
+
+            function scoreOf(a) {
+                var s = scores[slugKey(a.url)];
+                return typeof s === 'number' ? s : 0;
+            }
+
             function render() {
                 grid.innerHTML = '';
                 var articles = window.USL_ARCHIVE || [];
                 var visible = articles.filter(matches);
+                if (sortMode === 'popular') {
+                    visible = visible.slice().sort(function(a, b) { return scoreOf(b) - scoreOf(a); });
+                }
                 visible.forEach(function(a) {
                     var card = document.createElement('article');
                     card.className = 'news-card';
@@ -76,16 +91,33 @@
                     h3.textContent = a.title;
                     var p = document.createElement('p');
                     p.textContent = a.description || '';
+                    var meta = document.createElement('span');
+                    meta.className = 'news-meta';
                     var date = document.createElement('span');
                     date.className = 'news-date';
                     date.textContent = a.date || '';
+                    meta.appendChild(date);
+                    if (a.minutes) {
+                        var time = document.createElement('span');
+                        time.className = 'news-time';
+                        time.textContent = '\u2248' + a.minutes + ' \u0445\u0432';
+                        meta.appendChild(time);
+                    }
                     content.appendChild(h3);
                     content.appendChild(p);
-                    content.appendChild(date);
+                    content.appendChild(meta);
 
                     link.appendChild(imageDiv);
                     link.appendChild(content);
                     card.appendChild(link);
+                    if (window.Bookmarks) {
+                        card.appendChild(window.Bookmarks.button({
+                            url: '/' + a.url,
+                            title: a.title,
+                            tag: a.tag,
+                            date: a.date
+                        }));
+                    }
                     grid.appendChild(card);
                 });
 
@@ -118,6 +150,17 @@
                 });
 
                 if (searchInput) searchInput.addEventListener('input', render);
+                if (sortSelect) sortSelect.addEventListener('change', function() {
+                    sortMode = sortSelect.value;
+                    render();
+                });
+                if (window.SB && window.SB.isConfigured()) {
+                    window.SB.allScores().then(function(rows) {
+                        scores = {};
+                        (rows || []).forEach(function(r) { scores[r.article_slug] = r.score || 0; });
+                        if (sortMode === 'popular') render();
+                    }).catch(function() {});
+                }
                 render();
             });
         }

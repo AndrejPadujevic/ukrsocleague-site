@@ -1,0 +1,12 @@
+{
+  "name": "ukrsocleague-site",
+  "version": "1.0.0",
+  "description": "Українська Соціалістична Ліга - Webapp & Static Site",
+  "main": "js/layout.js",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
