@@ -40,7 +40,7 @@
     function navHtml() {
         return navLinks.map(function(item) {
             var cls = 'nav-item' + (item.key === ACTIVE ? ' active' : '');
-            return '<a href="' + item.href + '" class="' + cls + '">' + item.label + '</a>';
+            return '<a href="' + item.href + '" class="' + cls + '" data-nav-key="' + item.key + '">' + item.label + '</a>';
         }).join('\n            ');
     }
 
@@ -120,38 +120,50 @@
         document.body.insertBefore(skip, document.body.firstChild);
     }
 
-    // Header: red banner + main nav + side menu
-    headerEl.innerHTML =
-        '    <div class="red-banner">\n' +
-        '        <div class="banner-text">\n' +
-        '            <span class="slogan-left">' + SLOGAN_LEFT + '</span>\n' +
-        '            <div class="logo-container">\n' +
-        '                <img src="' + BASE + 'pictures/logo_w.png" alt="УСЛ" class="main-logo">\n' +
-        '            </div>\n' +
-        '            <span class="slogan-right">' + SLOGAN + '</span>\n' +
-        '        </div>\n' +
-        '    </div>\n' +
-        '\n' +
-        '    <nav class="main-nav">\n' +
-        '        <div class="nav-container">\n' +
-        '            ' + navHtml() + '\n' +
-        '            <a href="#" class="nav-item dropdown-toggle">МЕНЮ ▼</a>\n' +
-        '        </div>\n' +
-        '    </nav>\n' +
-        '\n' +
-        '    <div id="side-overlay" class="side-overlay"></div>\n' +
-        '\n' +
-        '    <div id="side-menu" class="side-menu">\n' +
-        '        ' + sideMenuHtml() + '\n' +
-        '    </div>';
+    // Idempotent injection guard (app-shell navigation never re-injects chrome)
+    var alreadyInjected = headerEl.querySelector('.red-banner') && footerEl.querySelector('.main-footer');
 
-    // Footer: main footer + scroll-to-top
-    footerEl.innerHTML =
-        '    <footer class="main-footer">\n' +
-        '        ' + footerHtml() + '\n' +
-        '    </footer>\n' +
-        '\n' +
-        '    <button id="scroll-to-top" class="scroll-to-top" title="Вгору">↑</button>';
+    if (!alreadyInjected) {
+        // Header: red banner + main nav + side menu
+        headerEl.innerHTML =
+            '    <div class="red-banner">\n' +
+            '        <div class="banner-text">\n' +
+            '            <span class="slogan-left">' + SLOGAN_LEFT + '</span>\n' +
+            '            <div class="logo-container">\n' +
+            '                <img src="' + BASE + 'pictures/logo_w.png" alt="УСЛ" class="main-logo">\n' +
+            '            </div>\n' +
+            '            <span class="slogan-right">' + SLOGAN + '</span>\n' +
+            '        </div>\n' +
+            '    </div>\n' +
+            '\n' +
+            '    <nav class="main-nav">\n' +
+            '        <div class="nav-container">\n' +
+            '            ' + navHtml() + '\n' +
+            '            <a href="#" class="nav-item dropdown-toggle">МЕНЮ ▼</a>\n' +
+            '        </div>\n' +
+            '    </nav>\n' +
+            '\n' +
+            '    <div id="side-overlay" class="side-overlay"></div>\n' +
+            '\n' +
+            '    <div id="side-menu" class="side-menu">\n' +
+            '        ' + sideMenuHtml() + '\n' +
+            '    </div>';
+
+        // Footer: main footer + scroll-to-top
+        footerEl.innerHTML =
+            '    <footer class="main-footer">\n' +
+            '        ' + footerHtml() + '\n' +
+            '    </footer>\n' +
+            '\n' +
+            '    <button id="scroll-to-top" class="scroll-to-top" title="Вгору">↑</button>';
+    }
+
+    // Export path helpers for app-nav.js (and others)
+    window.USLPath = {
+        isArticle: isArticleDir,
+        base: BASE,
+        article: articleRef
+    };
 
     // ---- Behaviour (side menu, mobile nav, scroll-to-top) ----
     var dropdownToggle = document.querySelector('.dropdown-toggle');
@@ -219,5 +231,14 @@
         scrollToTopBtn.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+    }
+
+    // Load the app-shell layer (tab bar, SPA navigation, service worker, install prompt)
+    if (!document.querySelector('script[data-app-nav]')) {
+        var appNav = document.createElement('script');
+        appNav.src = BASE + 'js/app-nav.js';
+        appNav.setAttribute('data-app-nav', '');
+        appNav.defer = true;
+        document.body.appendChild(appNav);
     }
 })();

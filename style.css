@@ -9,8 +9,8 @@
     --soviet-red: #CC0000;
     --deep-red: #990000;
     --light-red: #FF3333;
-    --gold: #FFD700;
-    --dark-gold: #D4AF37;
+    --gold: #FFFFFF;
+    --dark-gold: #FFFFFF;
     
     /* Neutral Colors */
     --black: #000000;
@@ -413,6 +413,12 @@ body {
 
 .hero-image-container:hover {
     transform: translateY(-5px);
+}
+
+.hero-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .hero-logo {
@@ -821,7 +827,7 @@ body {
 }
 
 .footer-text p:last-child {
-    color: var(--gold);
+    color: var(--soviet-red);
     font-style: italic;
 }
 
@@ -3213,4 +3219,218 @@ body.dark-mode-preferred .related-card {
 
 body.dark-mode-preferred .notfound-container {
     background-color: #1e1e1e;
+}
+
+/* ============================================
+   APP SHELL: BOTTOM TAB BAR (mobile webapp)
+   Injected by js/app-nav.js. Hidden on desktop.
+   ============================================ */
+.app-tabbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1500;
+    display: none;
+    grid-template-columns: repeat(5, 1fr);
+    background: var(--bg-dark);
+    border-top: 3px solid var(--soviet-red);
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.3);
+    transition: transform var(--transition-normal);
+}
+
+.app-tabbar-hidden {
+    transform: translateY(110%);
+}
+
+.app-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 8px 2px;
+    color: var(--medium-gray);
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    min-height: 48px;
+    transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.app-tab:hover {
+    color: var(--white);
+}
+
+.app-tab.active {
+    color: var(--gold);
+}
+
+.app-tab.active .app-tab-icon {
+    color: var(--gold);
+}
+
+.app-tab-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .app-tabbar {
+        display: grid;
+    }
+
+    body {
+        padding-bottom: calc(56px + env(safe-area-inset-bottom));
+    }
+
+    .scroll-to-top {
+        bottom: calc(72px + env(safe-area-inset-bottom));
+    }
+}
+
+/* ============================================
+   APP SHELL: INSTALL PROMPT + GUIDE
+   ============================================ */
+.app-install {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(64px + env(safe-area-inset-bottom));
+    z-index: 1490;
+    display: none;
+    background: var(--bg-dark);
+    color: var(--white);
+    border: 2px solid var(--soviet-red);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+}
+
+.app-install-inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+}
+
+.app-install-text {
+    flex: 1;
+    font-family: var(--font-secondary);
+    font-size: 0.85rem;
+}
+
+.app-install-btn {
+    background: var(--soviet-red);
+    color: var(--white);
+    border: none;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.app-install-btn:hover {
+    background: var(--deep-red);
+}
+
+.app-install-close {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 4px;
+}
+
+.app-install-close:hover {
+    color: var(--light-red);
+}
+
+.install-guide {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+}
+
+.install-guide-box {
+    background: var(--white);
+    color: var(--dark-gray);
+    border-radius: var(--radius-md);
+    border-top: 4px solid var(--soviet-red);
+    max-width: 340px;
+    width: 100%;
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.install-guide-box h3 {
+    font-family: var(--font-primary);
+    color: var(--soviet-red);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.install-guide-box ol {
+    margin: 0 0 var(--spacing-md) var(--spacing-lg);
+    font-family: var(--font-secondary);
+    line-height: 1.7;
+}
+
+body.dark-mode-preferred .app-tabbar {
+    background: #1e1e1e;
+    border-top-color: var(--soviet-red);
+}
+
+body.dark-mode-preferred .app-tab {
+    color: var(--dark-gray);
+}
+
+body.dark-mode-preferred .app-tab.active {
+    color: var(--gold);
+}
+
+body.dark-mode-preferred .app-install {
+    background: #1e1e1e;
+}
+
+body.dark-mode-preferred .install-guide-box {
+    background: #1e1e1e;
+    color: var(--dark-gray);
+}
+
+/* Subtle content transition after app-shell navigation */
+#main-content {
+    animation: app-content-fade 0.15s ease-out;
+}
+
+@keyframes app-content-fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .app-tabbar {
+        transition: none;
+    }
+
+    #main-content {
+        animation: none;
+    }
 }
