@@ -30,11 +30,11 @@
     }
 
     var navLinks = [
-        { key: 'home', label: 'ГОЛОВНА', href: BASE + 'index.html' },
-        { key: 'views', label: 'ПОГЛЯДИ', href: articleRef('views.htm') },
-        { key: 'history', label: 'ІСТОРІЯ', href: BASE + 'history.htm' },
-        { key: 'manifest', label: 'МАНІФЕСТ', href: BASE + 'manifest.htm' },
-        { key: 'archive', label: 'АРХІВ', href: BASE + 'archive.htm' }
+        { key: 'home', label: 'ГОЛОВНА', href: '/index.html' },
+        { key: 'views', label: 'ПОГЛЯДИ', href: '/articles/views.htm' },
+        { key: 'history', label: 'ІСТОРІЯ', href: '/history.htm' },
+        { key: 'manifest', label: 'МАНІФЕСТ', href: '/manifest.htm' },
+        { key: 'archive', label: 'АРХІВ', href: '/archive.htm' }
     ];
 
     function navHtml() {
@@ -46,14 +46,14 @@
 
     function sideMenuHtml() {
         var items = [
-            { href: BASE + 'index.html', label: 'Головна' },
-            { href: articleRef('views.htm'), label: 'Наші погляди' },
-            { href: BASE + 'history.htm', label: 'Історія' },
-            { href: BASE + 'manifest.htm', label: 'Маніфест' },
-            { href: BASE + 'archive.htm', label: 'Архів' },
+            { href: '/index.html', label: 'Головна' },
+            { href: '/articles/views.htm', label: 'Наші погляди' },
+            { href: '/history.htm', label: 'Історія' },
+            { href: '/manifest.htm', label: 'Маніфест' },
+            { href: '/archive.htm', label: 'Архів' },
             { href: 'https://www.youtube.com/@ukr_soc_league', label: 'УСЛ в YouTube' },
             { href: 'https://tradeunion.org.ua/', label: 'Профспілка "Захист Праці"' },
-            { href: articleRef('lis_msl_isl.htm'), label: 'Міжнародна Соціалістична Ліга' }
+            { href: '/articles/lis_msl_isl.htm', label: 'Міжнародна Соціалістична Ліга' }
         ];
         var html = items.map(function(item) {
             return '<a href="' + item.href + '" class="side-nav-item">' + item.label + '</a>';
@@ -101,7 +101,7 @@
             '            <div class="footer-partners">\n' +
             '                <a href="https://tradeunion.org.ua/" class="partner-link">Профспілка "Захист Праці"</a>\n' +
             '                <a href="https://www.youtube.com/@ukr_soc_league" class="partner-link">УСЛ в YouTube</a>\n' +
-            '                <a href="' + articleRef('lis_msl_isl.htm') + '" class="partner-link">Міжнародна Соціалістична Ліга</a>\n' +
+            '                <a href="/articles/lis_msl_isl.htm" class="partner-link">Міжнародна Соціалістична Ліга</a>\n' +
             '            </div>\n' +
             '        </div>\n' +
             '    </div>\n' +
