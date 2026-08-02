@@ -4340,3 +4340,277 @@ body.dark-mode-preferred .feedback-btn:hover {
         transition: none;
     }
 }
+
+/* ============================================
+   ADMIN PAGE STYLES
+   ============================================ */
+
+.admin-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-md);
+}
+
+/* Login Screen */
+.admin-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.login-card {
+    background: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.login-card h1 {
+    color: var(--soviet-red);
+    margin-bottom: var(--spacing-sm);
+    font-family: var(--font-primary);
+}
+
+.login-card p {
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Admin Dashboard */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--soviet-red);
+}
+
+.admin-header h1 {
+    color: var(--soviet-red);
+    font-family: var(--font-primary);
+}
+
+.admin-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+@media (max-width: 1024px) {
+    .admin-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Admin Form Section */
+.admin-form-section {
+    background: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.admin-form-section h2 {
+    color: var(--soviet-red);
+    margin-bottom: var(--spacing-lg);
+    font-family: var(--font-primary);
+}
+
+.form-field {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 2px solid var(--medium-gray);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--soviet-red);
+}
+
+.form-field textarea {
+    resize: vertical;
+    min-height: 200px;
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+}
+
+.btn-primary {
+    background: var(--soviet-red);
+    color: var(--white);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--transition-normal);
+}
+
+.btn-primary:hover {
+    background: var(--deep-red);
+}
+
+.btn-secondary {
+    background: var(--medium-gray);
+    color: var(--text-dark);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--transition-normal);
+}
+
+.btn-secondary:hover {
+    background: var(--text-dark);
+    color: var(--white);
+}
+
+.error-msg {
+    color: var(--soviet-red);
+    margin-top: var(--spacing-sm);
+    font-weight: 700;
+}
+
+/* Admin List Section */
+.admin-list-section {
+    background: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.admin-list-section h2 {
+    color: var(--soviet-red);
+    margin-bottom: var(--spacing-lg);
+    font-family: var(--font-primary);
+}
+
+.articles-list {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.admin-article-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--light-gray);
+    transition: background var(--transition-normal);
+}
+
+.admin-article-item:hover {
+    background: var(--bg-light);
+}
+
+.article-info h3 {
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.1rem;
+}
+
+.article-meta {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+.article-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.btn-edit {
+    background: var(--gold);
+    color: var(--text-dark);
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--transition-normal);
+}
+
+.btn-edit:hover {
+    background: var(--gold-dark);
+}
+
+.btn-delete {
+    background: var(--soviet-red);
+    color: var(--white);
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--transition-normal);
+}
+
+.btn-delete:hover {
+    background: var(--deep-red);
+}
+
+/* Admin page dark mode */
+body.dark-mode-preferred .login-card,
+body.dark-mode-preferred .admin-form-section,
+body.dark-mode-preferred .admin-list-section {
+    background: #1e1e1e;
+}
+
+body.dark-mode-preferred .login-card h1,
+body.dark-mode-preferred .admin-header h1,
+body.dark-mode-preferred .admin-form-section h2,
+body.dark-mode-preferred .admin-list-section h2,
+body.dark-mode-preferred .article-info h3 {
+    color: var(--white);
+}
+
+body.dark-mode-preferred .login-card p,
+body.dark-mode-preferred .article-meta {
+    color: #ccc;
+}
+
+body.dark-mode-preferred .form-field label {
+    color: var(--white);
+}
+
+body.dark-mode-preferred .form-field input,
+body.dark-mode-preferred .form-field textarea {
+    background: #2a2a2a;
+    border-color: #444;
+    color: var(--white);
+}
+
+body.dark-mode-preferred .admin-article-item {
+    border-bottom-color: #444;
+}
+
+body.dark-mode-preferred .admin-article-item:hover {
+    background: #2a2a2a;
+}
+

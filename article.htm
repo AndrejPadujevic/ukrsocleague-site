@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFGJF79SNG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GFGJF79SNG');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Стаття | Українська Соціалістична Ліга</title>
+    <meta name="theme-color" content="#CC0000">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="УСЛ — RSS" href="https://ukrsocleague.org/feed.xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <meta name="google-site-verification" content="huYUy-jLczTg8JRC8gPj77VMDvX3RbNoNlWgocnUlfU" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" href="https://ukrsocleague.org/pictures/favicon.ico" type="image/x-icon">
+    <meta name="description" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <script src="js/device-detection.js"></script>
+</head>
+<body>
+    <div id="site-header" data-slogan="УКРАЇНСЬКА СОЦІАЛІСТИЧНА ЛІГА"></div>
+
+    <main id="main-content" class="article-page">
+        <div class="container">
+            <div id="article-loading" style="text-align: center; padding: 50px;">
+                <p>Завантаження статті...</p>
+            </div>
+            <div id="article-error" style="text-align: center; padding: 50px; display: none;">
+                <p>Статтю не знайдено</p>
+                <a href="/" class="btn-primary">На головну</a>
+            </div>
+            <article id="article-content" class="article-content-simple" style="display: none;">
+                <!-- Article content will be rendered here -->
+            </article>
+        </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/article-renderer.js"></script>
+</body>
+</html>

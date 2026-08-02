@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адмін-панель | УСЛ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body class="admin-page">
+    <div id="site-header" data-slogan="УКРАЇНСЬКА СОЦІАЛІСТИЧНА ЛІГА"></div>
+
+    <main id="main-content" class="admin-main">
+        <!-- Login Screen -->
+        <div id="admin-login" class="admin-login">
+            <div class="login-card">
+                <h1>Адмін-панель</h1>
+                <p>Введіть пароль для доступу</p>
+                <form id="login-form">
+                    <div class="form-field">
+                        <label for="admin-password">Пароль</label>
+                        <input type="password" id="admin-password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Увійти</button>
+                    <p id="login-error" class="error-msg"></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="admin-dashboard" class="admin-dashboard" style="display: none;">
+            <div class="admin-header">
+                <h1>Керування статтями</h1>
+                <button id="logout-btn" class="btn-secondary">Вийти</button>
+            </div>
+
+            <div class="admin-content">
+                <!-- Article Form -->
+                <div class="admin-form-section">
+                    <h2 id="form-title">Нова стаття</h2>
+                    <form id="article-form">
+                        <input type="hidden" id="article-id">
+                        
+                        <div class="form-field">
+                            <label for="article-title">Заголовок *</label>
+                            <input type="text" id="article-title" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="article-slug">Slug (URL) *</label>
+                            <input type="text" id="article-slug" required placeholder="example-article">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="article-description">Опис</label>
+                            <input type="text" id="article-description" placeholder="Короткий опис для картки">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="article-tag">Тег</label>
+                            <input type="text" id="article-tag" placeholder="Міжнародне">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="article-image">URL зображення</label>
+                            <input type="text" id="article-image" placeholder="pictures/article.jpg">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="article-reading">Час читання (хв)</label>
+                            <input type="number" id="article-reading" min="1" placeholder="5">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="article-content">Зміст (Markdown) *</label>
+                            <textarea id="article-content" rows="20" required placeholder="# Заголовок\n\nТекст статті..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Зберегти</button>
+                            <button type="button" id="cancel-btn" class="btn-secondary">Скасувати</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Articles List -->
+                <div class="admin-list-section">
+                    <h2>Всі статті</h2>
+                    <div id="articles-list" class="articles-list">
+                        <p>Завантаження...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

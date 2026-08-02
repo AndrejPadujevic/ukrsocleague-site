@@ -109,3 +109,26 @@ create table public.subscribers (
 );
 alter table public.subscribers enable row level security;
 create policy subscribers_insert_anon on public.subscribers for insert with check (true);
+
+-- ---------- ARTICLES (dynamic markdown content) ----------
+create table public.articles (
+    id bigserial primary key,
+    slug text not null unique,
+    title text not null,
+    description text,
+    content text not null, -- markdown content
+    tag text,
+    image_url text,
+    reading_minutes int,
+    published boolean not null default true,
+    created_at timestamptz not null default now(),
+    updated_at timestamptz not null default now()
+);
+create index articles_slug_idx on public.articles (slug);
+create index articles_published_idx on public.articles (published, created_at desc);
+alter table public.articles enable row level security;
+create policy articles_select_public on public.articles for select using (published = true);
+create policy articles_select_all on public.articles for select using (true);
+create policy articles_insert_admin on public.articles for insert with check (true);
+create policy articles_update_admin on public.articles for update using (true) with check (true);
+create policy articles_delete_admin on public.articles for delete using (true);
