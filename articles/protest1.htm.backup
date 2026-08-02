@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFGJF79SNG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-GFGJF79SNG');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Випробування нашої епохи</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Oswald:wght=400;700&display=swap" rel="stylesheet">
+    <script src="../js/device-detection.js"></script>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+</head>
+<body>
+
+<main class="article-page container">
+    <header>
+            <div class="logo-container">
+                <a href="../index.html">
+                    <img src="../pictures/logo_w.png" alt="Логотип УСЛ" class="logo-img">
+                    <a href="../index.html" class="logo">На головну</a>
+                </a>
+            </div>
+        </header>
+    <header class="article-header">
+        <span class="tag">Україна</span>
+        <div class="article-meta">
+            <span>Опубліковано: 14 Липня, 2026</span> • <span>Автор: Редакція УСЛ</span>
+        </div>
+        <div class="article-main-image">
+            <img src="../pictures/protestpic1.jpg" alt="обкладинка">
+        </div>
+    </header>
+
+    <div class="article-content">
+        <p class="lead">
+            Шановні Друзі!
+        </p>
+
+        <p>✊ Шановні друзі! <strong>Сьогодні під будівлею КМДА відбувся масовий протест проти підвищення тарифів</strong> на громадський транспорт. Вдалося зібрати <strong>близько 100-120</strong> людей на піку акції, <strong>були присутні члени </strong><a href="https://t.me/ukrsocLeague"><strong>Української Соціалістичної Ліги</strong></a><strong>, </strong><a href="https://t.me/socruh"><strong>Соціального Руху</strong></a><strong>, </strong><a href="https://t.me/priama_diia"><strong>Прямої Дії</strong></a><strong>, а також члени інших організацій, і, звісно, пересічні громадяни</strong>, що мали змогу виступити у форматі вільного мікрофону.<br /><br />🔥 З гарних новин:<strong> вдалося встановити діалог із владою, в четвер о 15:00 відбудеться громадське слухання</strong>, де протестно налаштована громадськість зможе пояснити неадекватність та антисоціальність ціни в 30 грн на проїзд.<strong> До складу ініціативної групи, що комунікуватиме з владою, також доєднався активіст УСЛ</strong> Тайлер Щур, котрий представлятиме молодь, зокрема достудентського віку, яка стоїть перед нелегким вибором між еміграцією та тим, щоб залишитись у Києві. Ми вважаємо, що влада має підтримувати тих, хто наважився залишитись,<strong> а не добивати студентів тим, що навіть пільговий місячний проїзний коштуватиме більше, ніж 2000 грн, що становить середню академічну стипендію!</strong><br /><br />🤝 <strong>Тому, в четвер буде проведено ще один мітинг в підтримку ініціативної групи, що вестимете діалог із владою. Всі деталі будуть в організаційному чаті </strong><a href="https://t.me/narodnainitziatyva"><strong>Народна Ініціатива (НІ!)</strong></a><strong>. Не дамо погасити народний гнів!<br /></strong></p>
+      <div class="hero-btns">
+                <a href="https://t.me/ukrsocLeague" class="btn-primary">Телеграм УСЛ</a>
+                <a href="https://t.me/narodnainitziatyva" class="btn-secondary">Народна Ініціатива</a>
+            </div>
+    </div>
+</main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Українська Соціалістична Ліга</p>
+        </div>
+    </footer>
+    <div id="scroll-nav">
+        <button id="scroll-to-top" title="Вгору">↑</button>
+        <button id="scroll-to-bottom" title="Вниз">↓</button>
+    </div>
+    <script src="../script.js"></script>
+</body>
+</html>
