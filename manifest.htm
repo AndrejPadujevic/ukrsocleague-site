@@ -10,12 +10,18 @@
       gtag('config', 'G-GFGJF79SNG');
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Маніфест | Українська Соціалістична Ліга</title>
+    <meta name="theme-color" content="#CC0000">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="УСЛ — RSS" href="https://ukrsocleague.org/feed.xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <meta name="google-site-verification" content="huYUy-jLczTg8JRC8gPj77VMDvX3RbNoNlWgocnUlfU" />
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Oswald:wght=400;700&display=swap" rel="stylesheet">
@@ -27,59 +33,26 @@
     <meta name="description" content="Маніфест Української Соціалістичної Ліги - основні принципи та цілі організації">
     <meta name="keywords" content="УСЛ, маніфест, соціалізм, Україна, ліві, робітничий рух">
     <meta property="og:title" content="Маніфест | Українська Соціалістична Ліга">
-    <meta property="og:description" content="Маніфест Української Соціалістичної Ліги">
+    <meta property="og:description" content="Маніфест Української Соціалістичної Ліги - основні принципи та цілі організації">
     <meta property="og:image" content="https://ukrsocleague.org/pictures/preview.jpg">
     <meta property="og:url" content="https://ukrsocleague.org/manifest.htm">
     <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Маніфест | Українська Соціалістична Ліга">
+    <meta name="twitter:description" content="Маніфест Української Соціалістичної Ліги - основні принципи та цілі організації">
     <link rel="canonical" href="https://ukrsocleague.org/manifest.htm">
     <script src="js/device-detection.js"></script>
-</head>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Маніфест | Українська Соціалістична Ліга",
+      "url": "https://ukrsocleague.org/manifest.htm",
+      "description": "Маніфест Української Соціалістичної Ліги - основні принципи та цілі організації"
+    }
+    </script></head>
 <body>
-    <!-- Red banner at top -->
-    <div class="red-banner">
-        <div class="banner-text">
-            <span class="slogan-left">ПРОЛЕТАРІ ВСІХ КРАЇН, ЄДНАЙТЕСЯ!</span>
-            <div class="logo-container">
-                <img src="pictures/logo_w.png" alt="УСЛ" class="main-logo">
-            </div>
-            <span class="slogan-right">МАНІФЕСТ УСЛ</span>
-        </div>
-    </div>
-
-    <!-- Main navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-item">ГОЛОВНА</a>
-            <a href="articles/views.htm" class="nav-item">ПОГЛЯДИ</a>
-            <a href="history.htm" class="nav-item">ІСТОРІЯ</a>
-            <a href="manifest.htm" class="nav-item active">МАНІФЕСТ</a>
-            <a href="#" class="nav-item dropdown-toggle">МЕНЮ ▼</a>
-        </div>
-    </nav>
-
-    <!-- Side menu overlay -->
-    <div id="side-overlay" class="side-overlay"></div>
-    
-    <!-- Side menu -->
-    <div id="side-menu" class="side-menu">
-        <div class="side-menu-header">
-            <h3>МЕНЮ</h3>
-            <button id="close-menu" class="close-btn">&times;</button>
-        </div>
-        <div class="side-menu-content">
-            <a href="index.html" class="side-nav-item">Головна</a>
-            <a href="articles/views.htm" class="side-nav-item">Наші погляди</a>
-            <a href="history.htm" class="side-nav-item">Історія</a>
-            <a href="manifest.htm" class="side-nav-item">Маніфест</a>
-            <a href="https://www.youtube.com/@ukr_soc_league" class="side-nav-item">УСЛ в YouTube</a>
-            <a href="https://tradeunion.org.ua/" class="side-nav-item">Профспілка "Захист Праці"</a>
-            <a href="articles/lis_msl_isl.htm" class="side-nav-item">Міжнародна Соціалістична Ліга</a>
-            <div class="side-menu-contact">
-                <a href="mailto:azura@noleron.com" class="side-contact-link">azura@noleron.com</a>
-                <a href="https://social.noleron.com/@ukrsocleague" class="side-contact-link">Fediverse</a>
-            </div>
-        </div>
-    </div>
+    <div id="site-header" data-slogan="МАНІФЕСТ УСЛ" data-active="manifest"></div>
 
     <!-- Page header -->
     <section class="page-header manifest-header">
@@ -92,7 +65,7 @@
     </section>
 
     <!-- Main content -->
-    <main class="manifest-page">
+    <main id="main-content" class="manifest-page">
         <div class="container">
             <article class="manifest-content">
                 <div class="manifest-intro">
@@ -142,7 +115,7 @@
                 <div class="manifest-conclusion">
                     <div class="conclusion-divider"></div>
                     <p class="conclusion-text">
-                        ★ ПРОЛЕТАРІ ВСІХ КРАЇН, ЄДНАЙТЕСЯ! ★
+                        ★ РОБІТНИКИ ВСІХ КРАЇН, ЄДНАЙТЕСЯ! ★
                     </p>
                     <p class="conclusion-subtext">
                         Солідарність назавжди!
@@ -152,136 +125,8 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-left">
-                <div class="footer-logo">
-                    <img src="pictures/logo.png" alt="УСЛ" class="footer-logo-img">
-                </div>
-                <div class="footer-text">
-                    <p>Українська Соціалістична Ліга</p>
-                    <p>Солідарність назавжди!</p>
-                </div>
-            </div>
-            <div class="footer-center">
-                <h4>КОНТАКТИ</h4>
-                <div class="footer-contact">
-                    <a href="mailto:azura@noleron.com" class="footer-contact-link">azura@noleron.com</a>
-                    <a href="https://social.noleron.com/@ukrsocleague" class="footer-contact-link">Fediverse</a>
-                    <a href="https://t.me/ukrsocLeague" class="footer-contact-link">Telegram</a>
-                    <a href="https://substack.com/@ukrsocleague" class="footer-contact-link">Substack</a>
-                </div>
-            </div>
-            <div class="footer-right">
-                <h4>ПАРТНЕРИ</h4>
-                <div class="footer-partners">
-                    <a href="https://tradeunion.org.ua/" class="partner-link">Профспілка "Захист Праці"</a>
-                    <a href="https://www.youtube.com/@ukr_soc_league" class="partner-link">УСЛ в YouTube</a>
-                    <a href="articles/lis_msl_isl.htm" class="partner-link">Міжнародна Соціалістична Ліга</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Українська Соціалістична Ліга. Всі права захищені.</p>
-            <p class="footer-slogan">ПРОЛЕТАРІ ВСІХ КРАЇН, ЄДНАЙТЕСЯ!</p>
-        </div>
-    </footer>
+    <div id="site-footer"></div>
 
-    <!-- Scroll to top button -->
-    <button id="scroll-to-top" class="scroll-to-top" title="Вгору">↑</button>
-
-    <script>
-        // Side menu elements
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-        const sideMenu = document.getElementById('side-menu');
-        const sideOverlay = document.getElementById('side-overlay');
-        const closeMenuBtn = document.getElementById('close-menu');
-        
-        // Toggle side menu
-        if (dropdownToggle && sideMenu) {
-            dropdownToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                sideMenu.classList.add('open');
-                sideOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        }
-        
-        // Close side menu
-        function closeSideMenu() {
-            if (sideMenu) sideMenu.classList.remove('open');
-            if (sideOverlay) sideOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        
-        if (closeMenuBtn) {
-            closeMenuBtn.addEventListener('click', closeSideMenu);
-        }
-        
-        if (sideOverlay) {
-            sideOverlay.addEventListener('click', closeSideMenu);
-        }
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (sideMenu && !sideMenu.contains(e.target) && 
-                !dropdownToggle.contains(e.target) && 
-                e.target !== dropdownToggle) {
-                closeSideMenu();
-            }
-        });
-        
-        // Mobile navigation - hide main links on mobile view
-        function updateMobileNavigation() {
-            const navItems = document.querySelectorAll('.nav-item:not(.dropdown-toggle)');
-            const isMobileView = window.innerWidth <= 768;
-            
-            navItems.forEach(item => {
-                if (isMobileView) {
-                    // Hide all nav items except dropdown on mobile
-                    if (!item.classList.contains('dropdown-toggle')) {
-                        item.style.display = 'none';
-                    }
-                } else {
-                    // Show all nav items on desktop/tablet
-                    item.style.display = '';
-                }
-            });
-        }
-        
-        // Initialize mobile navigation
-        updateMobileNavigation();
-        
-        // Update on resize
-        let resizeTimeout;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(function() {
-                updateMobileNavigation();
-                // Close menu if resizing to desktop
-                if (window.innerWidth > 768) {
-                    closeSideMenu();
-                }
-            }, 250);
-        });
-        
-        // Scroll to top functionality
-        const scrollToTopBtn = document.getElementById('scroll-to-top');
-        
-        if (scrollToTopBtn) {
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    scrollToTopBtn.style.display = 'block';
-                } else {
-                    scrollToTopBtn.style.display = 'none';
-                }
-            });
-            
-            scrollToTopBtn.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-    </script>
+    <script src="js/layout.js"></script>
 </body>
 </html>
