@@ -232,6 +232,10 @@
         initGoogleTranslate();
     }
 
+    window.SiteTranslate = {
+        getLang: getCurrentLang
+    };
+
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {

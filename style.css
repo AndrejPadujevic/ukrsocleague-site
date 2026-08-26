@@ -2192,7 +2192,7 @@ body {
     width: 300px;
     max-width: 90%;
     height: 100%;
-    background: #0d0d0d;
+    background: #080808;
     color: var(--white);
     z-index: 2001;
     transition: right var(--transition-normal);
@@ -2851,15 +2851,19 @@ body {
    Set by js/device-detection.js from prefers-color-scheme
    ============================================ */
 body.dark-mode-preferred {
-    --bg-cream: #141414;
-    --bg-light: #1c1c1c;
-    --light-gray: #1c1c1c;
-    --medium-gray: #3a3a3a;
-    --dark-gray: #d8d8d8;
-    --darker-gray: #f0f0f0;
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.6);
-    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.7);
+    --bg-cream: #0e0e0e;
+    --bg-light: #111111;
+    --light-gray: #151515;
+    --medium-gray: #252525;
+    --dark-gray: #c8c8c8;
+    --darker-gray: #e0e0e0;
+    --text-dark: #c8c8c8;
+    --text-muted: #888888;
+    --text-gray: #666666;
+    --border-color: #252525;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.6);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.7);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.8);
     background-color: var(--bg-cream);
     color: var(--dark-gray);
 }
@@ -2882,9 +2886,9 @@ body.dark-mode-preferred .important-section,
 body.dark-mode-preferred .contact-container,
 body.dark-mode-preferred .related-articles,
 body.dark-mode-preferred .share-buttons {
-    background-color: #111111;
+    background-color: #0a0a0a;
     color: var(--dark-gray);
-    border-color: #2a2a2a;
+    border-color: #1a1a1a;
 }
 
 body.dark-mode-preferred .news-card h3,
@@ -2895,7 +2899,7 @@ body.dark-mode-preferred .side-menu {
 }
 
 body.dark-mode-preferred .side-menu {
-    background-color: #0d0d0d;
+    background-color: #080808;
 }
 
 body.dark-mode-preferred .page-header,
@@ -2923,7 +2927,106 @@ body.dark-mode-preferred .scroll-to-top {
 }
 
 body.dark-mode-preferred ::-webkit-scrollbar-track {
-    background: #2a2a2a;
+    background: #1a1a1a;
+}
+
+/* ============================================
+   BLACK MODE (body.black-mode) — AMOLED
+   ============================================ */
+body.black-mode {
+    --bg-cream: #000000;
+    --bg-light: #000000;
+    --light-gray: #0a0a0a;
+    --medium-gray: #1a1a1a;
+    --dark-gray: #c0c0c0;
+    --darker-gray: #e0e0e0;
+    --text-dark: #c0c0c0;
+    --text-muted: #777777;
+    --text-gray: #555555;
+    --border-color: #1a1a1a;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.8);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.9);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 1);
+    background-color: #000000;
+    color: var(--dark-gray);
+}
+body.black-mode .news-card,
+body.black-mode .news-content,
+body.black-mode .article-page,
+body.black-mode .article-content-simple,
+body.black-mode .views-content,
+body.black-mode .principle-card,
+body.black-mode .timeline-content,
+body.black-mode .history-card,
+body.black-mode .manifest-page,
+body.black-mode .archive-section,
+body.black-mode .archive-controls,
+body.black-mode .hero-image-container,
+body.black-mode .article-image-container,
+body.black-mode .article-main-image,
+body.black-mode .important-section,
+body.black-mode .contact-container,
+body.black-mode .related-articles,
+body.black-mode .share-buttons {
+    background-color: #000000;
+    border-color: #1a1a1a;
+}
+body.black-mode .side-menu {
+    background-color: #000000;
+}
+body.black-mode ::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+/* ============================================
+   CONTRAST MODE (body.contrast-mode)
+   ============================================ */
+body.contrast-mode {
+    --soviet-red: #FF0000;
+    --light-red: #FF4444;
+    --medium-gray: #888888;
+    --dark-gray: #000000;
+    --darker-gray: #000000;
+    --text-dark: #000000;
+    --text-muted: #333333;
+    --text-gray: #555555;
+    --border-color: #000000;
+}
+body.dark-mode-preferred.contrast-mode {
+    --dark-gray: #ffffff;
+    --darker-gray: #ffffff;
+    --text-dark: #ffffff;
+    --text-muted: #cccccc;
+    --text-gray: #aaaaaa;
+    --medium-gray: #555555;
+    --border-color: #ffffff;
+}
+body.contrast-mode .news-card,
+body.contrast-mode .article-page,
+body.contrast-mode .article-content-simple,
+body.contrast-mode .manifest-page,
+body.contrast-mode .archive-section {
+    border-width: 2px;
+    border-color: var(--dark-gray);
+}
+body.dark-mode-preferred.contrast-mode .news-card,
+body.dark-mode-preferred.contrast-mode .article-page,
+body.dark-mode-preferred.contrast-mode .article-content-simple,
+body.dark-mode-preferred.contrast-mode .manifest-page,
+body.dark-mode-preferred.contrast-mode .archive-section {
+    background-color: #0a0a0a;
+    border-color: #ffffff;
+}
+body.contrast-mode a {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+body.dark-mode-preferred.contrast-mode a {
+    color: #FF6666;
+}
+body.contrast-mode .news-card:hover {
+    border-color: var(--soviet-red);
+    border-width: 3px;
 }
 
 /* ============================================
@@ -3261,7 +3364,7 @@ body.dark-mode-preferred .related-card {
 }
 
 body.dark-mode-preferred .notfound-container {
-    background-color: #1e1e1e;
+    background-color: #0a0a0a;
 }
 
 /* ============================================
@@ -3437,7 +3540,7 @@ body.dark-mode-preferred .notfound-container {
 }
 
 body.dark-mode-preferred .app-tabbar {
-    background: #1e1e1e;
+    background: #0a0a0a;
     border-top-color: var(--soviet-red);
 }
 
@@ -3450,11 +3553,11 @@ body.dark-mode-preferred .app-tab.active {
 }
 
 body.dark-mode-preferred .app-install {
-    background: #1e1e1e;
+    background: #0a0a0a;
 }
 
 body.dark-mode-preferred .install-guide-box {
-    background: #1e1e1e;
+    background: #0a0a0a;
     color: var(--dark-gray);
 }
 
@@ -3533,8 +3636,12 @@ body.dark-mode-preferred .install-guide-box {
 }
 
 /* ============================================
-   WEBAPP: THEME TOGGLE
+   WEBAPP: THEME DROPDOWN
    ============================================ */
+.theme-dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
 .theme-toggle {
     font-family: var(--font-secondary);
     font-size: 0.9rem;
@@ -3545,10 +3652,57 @@ body.dark-mode-preferred .install-guide-box {
     padding: var(--spacing-xs) var(--spacing-sm);
     cursor: pointer;
     transition: all var(--transition-fast);
+    white-space: nowrap;
 }
 .theme-toggle:hover {
     border-color: var(--soviet-red);
     color: var(--soviet-red);
+}
+.theme-dropdown {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    margin-bottom: 4px;
+    background: var(--white);
+    border: 1px solid var(--medium-gray);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    z-index: 100;
+    min-width: 200px;
+    max-height: 320px;
+    overflow-y: auto;
+}
+.theme-dropdown.open {
+    display: block;
+}
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 14px;
+    font-family: var(--font-secondary);
+    font-size: 0.85rem;
+    color: var(--dark-gray);
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+.theme-option:hover {
+    background: var(--light-gray);
+}
+.theme-option.active {
+    background: rgba(204, 0, 0, 0.08);
+    color: var(--soviet-red);
+    font-weight: 700;
+}
+.theme-option-icon {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
 }
 .side-menu .theme-toggle,
 .side-menu .side-tool-btn {
@@ -3559,6 +3713,20 @@ body.dark-mode-preferred .install-guide-box {
 .side-menu .theme-toggle:hover {
     border-color: var(--white);
     color: var(--accent);
+}
+.side-menu .theme-dropdown {
+    background: #1a1a1a;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+.side-menu .theme-option {
+    color: rgba(255, 255, 255, 0.8);
+}
+.side-menu .theme-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+.side-menu .theme-option.active {
+    color: var(--soviet-red);
+    background: rgba(204, 0, 0, 0.15);
 }
 .footer-theme {
     margin-top: var(--spacing-sm);
@@ -3843,6 +4011,13 @@ body.dark-mode-preferred .install-guide-box {
     background: var(--white);
     color: var(--dark-gray);
     outline: none;
+}
+.search-lang-hint {
+    font-family: var(--font-secondary);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 4px var(--spacing-md) 0;
 }
 .search-results {
     max-height: 60vh;
@@ -4295,13 +4470,27 @@ body.dark-mode-preferred .nav-search-btn:hover {
     background: rgba(255, 255, 255, 0.12);
 }
 body.dark-mode-preferred .theme-toggle {
-    color: var(--white);
-    background: #1e1e1e;
-    border-color: #444;
+    color: var(--dark-gray);
+    background: #111111;
+    border-color: #252525;
 }
 body.dark-mode-preferred .theme-toggle:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: var(--light-red);
+    color: var(--light-red);
+}
+body.dark-mode-preferred .theme-dropdown {
+    background: #111111;
+    border-color: #252525;
+}
+body.dark-mode-preferred .theme-option {
+    color: var(--dark-gray);
+}
+body.dark-mode-preferred .theme-option:hover {
+    background: #1a1a1a;
+}
+body.dark-mode-preferred .theme-option.active {
+    color: var(--light-red);
+    background: rgba(255, 0, 0, 0.1);
 }
 body.dark-mode-preferred .newsletter-email,
 body.dark-mode-preferred .comment-name-input,
@@ -4312,8 +4501,8 @@ body.dark-mode-preferred .login-modal-box input[type="text"],
 body.dark-mode-preferred .login-modal-box textarea,
 body.dark-mode-preferred .login-modal-box select {
     color: var(--white);
-    background: #1e1e1e;
-    border-color: #444;
+    background: #0a0a0a;
+    border-color: #1a1a1a;
 }
 body.dark-mode-preferred .newsletter-msg,
 body.dark-mode-preferred .login-status,
@@ -4330,6 +4519,7 @@ body.dark-mode-preferred .comments-empty,
 body.dark-mode-preferred .search-status,
 body.dark-mode-preferred .search-result-snippet,
 body.dark-mode-preferred .search-fallback-label,
+body.dark-mode-preferred .search-lang-hint,
 body.dark-mode-preferred .bookmarks-empty {
     color: var(--white);
 }
@@ -4345,8 +4535,8 @@ body.dark-mode-preferred .search-fallback-btn:hover {
 }
 body.dark-mode-preferred .vote-btn,
 body.dark-mode-preferred .comment-vote-btn {
-    background: #1e1e1e;
-    border-color: #444;
+    background: #0a0a0a;
+    border-color: #252525;
 }
 body.dark-mode-preferred .vote-btn:hover,
 body.dark-mode-preferred .comment-vote-btn:hover {
@@ -4365,8 +4555,8 @@ body.dark-mode-preferred .search-box,
 body.dark-mode-preferred .login-modal-box,
 body.dark-mode-preferred .bookmark-row,
 body.dark-mode-preferred .search-result {
-    background: #1e1e1e;
-    border-color: #444;
+    background: #0a0a0a;
+    border-color: #1a1a1a;
 }
 body.dark-mode-preferred .search-result:hover {
     background: rgba(204, 0, 0, 0.18);
@@ -4670,7 +4860,7 @@ body.dark-mode-preferred .feedback-btn:hover {
 body.dark-mode-preferred .login-card,
 body.dark-mode-preferred .admin-form-section,
 body.dark-mode-preferred .admin-list-section {
-    background: #1e1e1e;
+    background: #0a0a0a;
 }
 
 body.dark-mode-preferred .login-card h1,
