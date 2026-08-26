@@ -9,10 +9,29 @@
 
     var DB_NAME = 'usl-search';
     var DB_STORE = 'pages';
-    var DB_VERSION = 'usl-v1';
+    var DB_META_STORE = 'meta';
+    var DB_VERSION = 2;
     var overlay = null;
     var memory = null;
     var building = null;
+
+    var STOP_WORDS = new Set([
+        'і', 'в', 'на', 'що', 'який', 'це', 'та', 'не', 'але', 'як',
+        'за', 'він', 'вона', 'воно', 'вони', 'ми', 'ви', 'я', 'то',
+        'бути', 'мати', 'цей', 'той', 'свій', 'їхній', 'наш', 'ваш',
+        'один', 'більше', 'менше', 'може', 'треба', 'тут', 'там',
+        'де', 'коли', 'чому', 'бо', 'або', 'ні', 'так', 'ось',
+        'лише', 'навіть', 'вже', 'ще', 'тільки', 'також', 'дуже',
+        'якраз', 'саме', 'отже', 'проте', 'однак', 'зате', 'тобто',
+        'тоді', 'зараз', 'потім', 'перед', 'після', 'між', 'через',
+        'без', 'для', 'до', 'від', 'під', 'над', 'при', 'й',
+        'його', 'її', 'їх', 'йому', 'їй', 'ним', 'нею', 'ними',
+        'нього', 'ній', 'них', 'цього', 'цій', 'ці', 'ціх',
+        'які', 'яких', 'якого', 'якій', 'яку', 'тим', 'того',
+        'тій', 'ту', 'ті', 'тіх', 'себе', 'собі', 'собою',
+        'такий', 'така', 'таке', 'такі', 'якось', 'десь', 'кудись',
+        'звідки', 'звідкіля', 'скільки', 'чий', 'чия', 'чие', 'чьї'
+    ]);
 
     function currentBase() {
         return /\/articles\//.test(window.location.pathname) ? '../' : '';
@@ -27,14 +46,20 @@
         document.head.appendChild(s);
     }
 
+    function fingerprint(archive) {
+        if (!archive.length) return '';
+        return archive.length + ':' + archive[0].url + ':' + archive[archive.length - 1].url;
+    }
+
     /* ---- IndexedDB helpers ---- */
     function idbOpen() {
         return new Promise(function(resolve, reject) {
             if (!window.indexedDB) { reject(new Error('no idb')); return; }
-            var req = window.indexedDB.open(DB_NAME, 1);
+            var req = window.indexedDB.open(DB_NAME, DB_VERSION);
             req.onupgradeneeded = function() {
                 var db = req.result;
                 if (!db.objectStoreNames.contains(DB_STORE)) db.createObjectStore(DB_STORE, { keyPath: 'url' });
+                if (!db.objectStoreNames.contains(DB_META_STORE)) db.createObjectStore(DB_META_STORE, { keyPath: 'key' });
             };
             req.onsuccess = function() { resolve(req.result); };
             req.onerror = function() { reject(req.error); };
@@ -50,6 +75,24 @@
         });
     }
 
+    function idbGetMeta(db, key) {
+        return new Promise(function(resolve) {
+            var tx = db.transaction(DB_META_STORE, 'readonly');
+            var req = tx.objectStore(DB_META_STORE).get(key);
+            req.onsuccess = function() { resolve(req.result ? req.result.value : null); };
+            req.onerror = function() { resolve(null); };
+        });
+    }
+
+    function idbPutMeta(db, key, value) {
+        return new Promise(function(resolve, reject) {
+            var tx = db.transaction(DB_META_STORE, 'readwrite');
+            tx.objectStore(DB_META_STORE).put({ key: key, value: value });
+            tx.oncomplete = function() { resolve(); };
+            tx.onerror = function() { reject(tx.error); };
+        });
+    }
+
     function idbPutAll(db, items) {
         return new Promise(function(resolve, reject) {
             var tx = db.transaction(DB_STORE, 'readwrite');
@@ -61,11 +104,21 @@
         });
     }
 
+    function stripNoise(doc) {
+        var cloned = doc.cloneNode(true);
+        var remove = cloned.querySelectorAll('script, style, nav, footer, header, .page-header, .article-header-simple, .article-widgets, .article-footer, #site-header, #site-footer, .skip-link');
+        remove.forEach(function(el) { el.remove(); });
+        return cloned;
+    }
+
     function extractText(html) {
         try {
             var doc = new DOMParser().parseFromString(html, 'text/html');
-            var article = doc.querySelector('main.article-page article') || doc.querySelector('main, #main-content');
-            var text = (article ? article.textContent : doc.body.textContent) || '';
+            var cleaned = stripNoise(doc);
+            var article = cleaned.querySelector('article') ||
+                          cleaned.querySelector('main .article-content') ||
+                          cleaned.querySelector('main');
+            var text = (article ? article.textContent : '') || '';
             return text.replace(/\s+/g, ' ').trim();
         } catch (e) { return ''; }
     }
@@ -77,7 +130,7 @@
                 if (!archive.length) { resolve([]); return; }
                 var items = [];
                 var done = 0;
-                archive.forEach(function(a) {
+                archive.forEach(function(a, idx) {
                     var url = currentBase() + a.url;
                     fetch(url, { credentials: 'same-origin' }).then(function(r) {
                         return r.ok ? r.text() : '';
@@ -93,11 +146,12 @@
                             date: a.date || '',
                             minutes: a.minutes || 0,
                             description: a.description || '',
-                            text: txt
+                            text: txt,
+                            idx: idx
                         });
                         done++;
                         if (done === archive.length) {
-                            persist(items).then(function() { resolve(items); }, function() { resolve(items); });
+                            persist(items, archive).then(function() { resolve(items); }, function() { resolve(items); });
                         }
                     });
                 });
@@ -106,14 +160,12 @@
         return building;
     }
 
-    function persist(items) {
+    function persist(items, archive) {
         return idbOpen().then(function(db) {
             return idbPutAll(db, items).then(function() {
+                return idbPutMeta(db, 'fingerprint', fingerprint(archive));
+            }).then(function() {
                 db.close();
-                var meta = document.createElement('div');
-                meta.id = 'usl-search-version';
-                meta.style.display = 'none';
-                document.head.appendChild(meta);
             });
         }).catch(function() {});
     }
@@ -121,14 +173,34 @@
     function loadIndex() {
         if (memory) return Promise.resolve(memory);
         return idbOpen().then(function(db) {
-            return idbAll(db).then(function(items) {
-                db.close();
-                memory = items;
-                return items;
+            return idbGetMeta(db, 'fingerprint').then(function(storedFp) {
+                return idbAll(db).then(function(items) {
+                    db.close();
+                    return { items: items, fp: storedFp };
+                });
+            });
+        }).then(function(result) {
+            return new Promise(function(resolve) {
+                ensureData(function(archive) {
+                    var currentFp = fingerprint(archive);
+                    if (result.fp === currentFp && result.items.length) {
+                        memory = result.items;
+                        resolve(memory);
+                    } else {
+                        buildIndex().then(function(items) { resolve(items); });
+                    }
+                });
             });
         }).catch(function() {
             return buildIndex();
         });
+    }
+
+    function isWordBoundary(text, idx, len) {
+        if (idx > 0 && /\w/.test(text[idx - 1])) return false;
+        var end = idx + len;
+        if (end < text.length && /\w/.test(text[end])) return false;
+        return true;
     }
 
     function score(doc, tokens) {
@@ -138,37 +210,96 @@
         var dl = (doc.description || '').toLowerCase();
         var body = doc.text.toLowerCase();
         tokens.forEach(function(t) {
-            if (tl.indexOf(t) !== -1) s += 5;
-            if (tagl.indexOf(t) !== -1) s += 3;
-            if (dl.indexOf(t) !== -1) s += 2;
+            if (tl.indexOf(t) !== -1) {
+                s += 10;
+                var tIdx = tl.indexOf(t);
+                if (isWordBoundary(tl, tIdx, t.length)) s += 5;
+            }
+            if (tagl.indexOf(t) !== -1) s += 6;
+            if (dl.indexOf(t) !== -1) {
+                s += 4;
+                var dIdx = dl.indexOf(t);
+                if (isWordBoundary(dl, dIdx, t.length)) s += 2;
+            }
             var idx = 0;
             var count = 0;
-            while (count < 5 && (idx = body.indexOf(t, idx)) !== -1) { count++; idx += t.length; }
-            s += count;
+            while (count < 5 && (idx = body.indexOf(t, idx)) !== -1) {
+                count++;
+                if (isWordBoundary(body, idx, t.length)) s += 2;
+                else s += 1;
+                idx += t.length;
+            }
+            var bodyWords = body.split(/\s+/);
+            for (var w = 0; w < bodyWords.length; w++) {
+                if (bodyWords[w].indexOf(t) === 0 && bodyWords[w].length > t.length) {
+                    s += 3;
+                    break;
+                }
+            }
         });
+        var maxIdx = 21;
+        s += Math.max(0, (maxIdx - (doc.idx || 0)) * 0.3);
         return s;
+    }
+
+    function highlight(text, tokens) {
+        if (!tokens.length) return esc(text);
+        var lower = text.toLowerCase();
+        var segments = [];
+        var pos = 0;
+        while (pos < text.length) {
+            var bestIdx = -1;
+            var bestLen = 0;
+            tokens.forEach(function(t) {
+                var found = lower.indexOf(t, pos);
+                if (found !== -1 && (bestIdx === -1 || found < bestIdx)) {
+                    bestIdx = found;
+                    bestLen = t.length;
+                }
+            });
+            if (bestIdx === -1) {
+                segments.push(esc(text.slice(pos)));
+                break;
+            }
+            if (bestIdx > pos) segments.push(esc(text.slice(pos, bestIdx)));
+            segments.push('<mark>' + esc(text.slice(bestIdx, bestIdx + bestLen)) + '</mark>');
+            pos = bestIdx + bestLen;
+        }
+        return segments.join('');
     }
 
     function snippet(doc, tokens) {
         var body = doc.text || '';
         var low = body.toLowerCase();
-        for (var i = 0; i < tokens.length; i++) {
-            var idx = low.indexOf(tokens[i]);
-            if (idx === -1) continue;
-            var start = Math.max(0, idx - 60);
-            var end = Math.min(body.length, idx + 120);
-            return (start > 0 ? '…' : '') + body.slice(start, end).trim() + (end < body.length ? '…' : '');
+        var bestIdx = -1;
+        var bestToken = '';
+        tokens.forEach(function(t) {
+            var found = low.indexOf(t);
+            if (found !== -1 && (bestIdx === -1 || found < bestIdx)) {
+                bestIdx = found;
+                bestToken = t;
+            }
+        });
+        if (bestIdx !== -1) {
+            var start = Math.max(0, bestIdx - 80);
+            var end = Math.min(body.length, bestIdx + 140);
+            var chunk = body.slice(start, end).trim();
+            var prefix = start > 0 ? '…' : '';
+            var suffix = end < body.length ? '…' : '';
+            return prefix + highlight(chunk, tokens) + suffix;
         }
-        return (doc.description || '').slice(0, 160);
+        return esc((doc.description || '').slice(0, 180));
     }
 
     function runSearch(q, docs) {
-        var tokens = q.toLowerCase().split(/\s+/).filter(function(t) { return t.length > 1; });
+        var tokens = q.toLowerCase().split(/\s+/).filter(function(t) {
+            return t.length >= 1 && !STOP_WORDS.has(t);
+        });
         if (!tokens.length) return [];
         var scored = docs.map(function(d) { return { d: d, s: score(d, tokens) }; })
             .filter(function(x) { return x.s > 0; })
             .sort(function(a, b) { return b.s - a.s; })
-            .slice(0, 12);
+            .slice(0, 20);
         return scored.map(function(x) { return x.d; });
     }
 
@@ -281,25 +412,29 @@
             var found = runSearch(q, docs);
             renderResults(found, q, box);
         }).catch(function() {
-            box.innerHTML = '<p class="search-status">Пошук недоступний.</p>';
+            box.innerHTML = '<p class="search-status">Локальний пошук недоступний.</p>' + webFallbackHTML(q);
         });
     }
 
     function renderResults(items, q, box) {
         box.innerHTML = '';
         if (!items.length) {
-            box.innerHTML = '<p class="search-status">Нічого не знайдено за запитом «' + esc(q) + '».</p>';
+            box.innerHTML = '<p class="search-status">Нічого не знайдено за запитом «' + esc(q) + '».</p>' + webFallbackHTML(q);
             return;
         }
+        var tokens = q.toLowerCase().split(/\s+/).filter(function(t) {
+            return t.length >= 1 && !STOP_WORDS.has(t);
+        });
         var list = document.createElement('div');
         list.className = 'search-results-list';
         items.forEach(function(d) {
             var a = document.createElement('a');
             a.href = currentBase() + d.url;
             a.className = 'search-result';
+            a.setAttribute('role', 'option');
             var title = document.createElement('span');
             title.className = 'search-result-title';
-            title.textContent = d.title;
+            title.innerHTML = highlight(d.title, tokens);
             a.appendChild(title);
             if (d.tag || d.date || d.minutes) {
                 var meta = document.createElement('span');
@@ -309,16 +444,34 @@
             }
             var snip = document.createElement('span');
             snip.className = 'search-result-snippet';
-            snip.textContent = snippet(d, q.toLowerCase().split(/\s+/).filter(function(t) { return t.length > 1; }));
+            snip.innerHTML = snippet(d, tokens);
             a.appendChild(snip);
             list.appendChild(a);
         });
         box.appendChild(list);
     }
 
+    function webFallbackHTML(q) {
+        var eq = encodeURIComponent('site:ukrsocleague.org ' + q);
+        return '<div class="search-fallback">' +
+            '<p class="search-fallback-label">Спробувати на зовнішньому пошуку:</p>' +
+            '<div class="search-fallback-links">' +
+            '<a class="search-fallback-btn" href="https://www.google.com/search?q=' + eq + '" target="_blank" rel="noopener">Google</a>' +
+            '<a class="search-fallback-btn" href="https://duckduckgo.com/?q=' + eq + '" target="_blank" rel="noopener">DuckDuckGo</a>' +
+            '<a class="search-fallback-btn" href="https://www.bing.com/search?q=' + eq + '" target="_blank" rel="noopener">Bing</a>' +
+            '</div></div>';
+    }
+
     function esc(s) {
         return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
+
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            open('search');
+        }
+    });
 
     window.SiteSearch = {
         open: function() { open('search'); },

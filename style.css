@@ -3868,6 +3868,43 @@ body.dark-mode-preferred .install-guide-box {
     font-size: 0.9rem;
     color: var(--dark-gray);
 }
+.search-result-snippet mark {
+    background: rgba(204, 0, 0, 0.15);
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 1px;
+}
+.search-fallback {
+    margin-top: var(--spacing-md);
+    text-align: center;
+}
+.search-fallback-label {
+    font-family: var(--font-secondary);
+    font-size: 0.85rem;
+    color: var(--dark-gray);
+    margin-bottom: var(--spacing-sm);
+}
+.search-fallback-links {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.search-fallback-btn {
+    display: inline-block;
+    padding: 6px 14px;
+    font-family: var(--font-secondary);
+    font-size: 0.85rem;
+    color: var(--soviet-red);
+    border: 1px solid var(--soviet-red);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+.search-fallback-btn:hover {
+    background: var(--soviet-red);
+    color: var(--white);
+}
 
 /* ============================================
    WEBAPP: LOGIN / FEEDBACK MODAL
@@ -4273,8 +4310,19 @@ body.dark-mode-preferred .vote-btn,
 body.dark-mode-preferred .comments-empty,
 body.dark-mode-preferred .search-status,
 body.dark-mode-preferred .search-result-snippet,
+body.dark-mode-preferred .search-fallback-label,
 body.dark-mode-preferred .bookmarks-empty {
     color: var(--white);
+}
+body.dark-mode-preferred .search-result-snippet mark {
+    background: rgba(204, 0, 0, 0.3);
+}
+body.dark-mode-preferred .search-fallback-btn {
+    color: var(--white);
+    border-color: var(--soviet-red);
+}
+body.dark-mode-preferred .search-fallback-btn:hover {
+    background: var(--soviet-red);
 }
 body.dark-mode-preferred .vote-btn,
 body.dark-mode-preferred .comment-vote-btn {
