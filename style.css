@@ -2192,7 +2192,7 @@ body {
     width: 300px;
     max-width: 90%;
     height: 100%;
-    background: var(--bg-dark);
+    background: #0d0d0d;
     color: var(--white);
     z-index: 2001;
     transition: right var(--transition-normal);
@@ -2693,6 +2693,25 @@ body {
     font-size: 1.15rem;
     font-weight: 500;
 }
+.manifest-video-link {
+    display: inline-block;
+    margin-top: var(--spacing-lg);
+    padding: 10px 24px;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--soviet-red);
+    border: 2px solid var(--soviet-red);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+.manifest-video-link:hover {
+    background: var(--soviet-red);
+    color: var(--white);
+}
 
 .manifest-conclusion {
     margin-top: var(--spacing-xl);
@@ -2863,9 +2882,9 @@ body.dark-mode-preferred .important-section,
 body.dark-mode-preferred .contact-container,
 body.dark-mode-preferred .related-articles,
 body.dark-mode-preferred .share-buttons {
-    background-color: #1e1e1e;
+    background-color: #111111;
     color: var(--dark-gray);
-    border-color: #3a3a3a;
+    border-color: #2a2a2a;
 }
 
 body.dark-mode-preferred .news-card h3,
@@ -2876,7 +2895,7 @@ body.dark-mode-preferred .side-menu {
 }
 
 body.dark-mode-preferred .side-menu {
-    background-color: #1e1e1e;
+    background-color: #0d0d0d;
 }
 
 body.dark-mode-preferred .page-header,
