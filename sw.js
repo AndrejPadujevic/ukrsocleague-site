@@ -8,7 +8,7 @@
  */
 'use strict';
 
-var CACHE = 'usl-v6';
+var CACHE = 'usl-v7';
 
 var PRECACHE_URLS = [
   '/',
