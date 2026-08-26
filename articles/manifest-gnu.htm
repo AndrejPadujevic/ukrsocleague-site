@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GFGJF79SNG');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="HandheldFriendly" content="True">
@@ -74,8 +68,9 @@
     }
     </script></head>
 <body>
-    <div id="site-header" data-slogan="Маніфест Цифрового Визволення"></div>
+    <div id="site-header" data-slogan="МАНІФЕСТ ЦИФРОВОГО ВИЗВОЛЕННЯ"></div>
 
+    <!-- Page header -->
     <section class="page-header">
         <div class="container">
             <div class="page-title-container">
@@ -85,20 +80,24 @@
         </div>
     </section>
 
-    <main id="main-content" class="article-section">
+    <!-- Main content -->
+    <main id="main-content" class="article-page">
         <div class="container">
-            <div class="article-content">
-                <div class="article-meta">
-                    <span class="article-category">Секція цифрових прав та вільного програмного забезпечення</span>
-                    <span class="article-date">26 серпня 2026</span>
+            <article class="article-content-simple">
+                <div class="article-header-simple">
+                    <span class="tag">Цифрові права</span>
+                    <div class="article-meta">
+                        <span>Опубліковано: 26 Серпня, 2026</span> &bull; <span>Автор: Редакція УСЛ</span>
+                    </div>
+                    <div class="article-main-image">
+                        <img src="../pictures/manifest-gnu.png" alt="Маніфест Цифрового Визволення">
+                    </div>
                 </div>
 
-                <picture class="article-hero">
-                    <img src="../pictures/manifest-gnu.png" alt="Маніфест Цифрового Визволення" class="article-hero-img">
-                </picture>
-
-                <div class="article-body">
-                    <p>Капіталізм XXI століття вже не обмежується володінням фабриками, шахтами та банками. Його головною зброєю стало володіння кодом.</p>
+                <div class="article-content">
+                    <p class="lead">
+                        Капіталізм XXI століття вже не обмежується володінням фабриками, шахтами та банками. Його головною зброєю стало володіння кодом.
+                    </p>
 
                     <p>Кожна закрита програма є цифровою фабрикою, збудованою на приватній власності. Кожна пропрієтарна ліцензія є цифровим парканом навколо суспільного знання. Кожен користувач, позбавлений можливості читати, змінювати або поширювати програму, є відчуженим від власного засобу праці.</p>
 
@@ -191,19 +190,13 @@
                         <p><strong>Не існує цифрової демократії без Вільного Програмного Забезпечення. Майбутнє належить GNU, Copyleft і свободі, не корпораціям.</strong></p>
                     </blockquote>
                 </div>
-
-                <div class="article-footer">
-                    <div class="article-share" id="article-share"></div>
-                    <div class="article-bookmark" id="article-bookmark"></div>
-                </div>
-            </div>
+            </article>
         </div>
     </main>
 
     <div id="site-footer"></div>
 
     <script src="../js/layout.js"></script>
-    <script src="../js/config.js"></script>
-    <script src="../js/article-widgets.js"></script>
+    <script src="../js/article-widgets.js" defer></script>
 </body>
 </html>
