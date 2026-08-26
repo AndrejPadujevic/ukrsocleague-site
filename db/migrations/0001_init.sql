@@ -4,6 +4,17 @@
 -- Run once in Supabase → SQL Editor.
 -- ============================================
 
+-- ---------- ADMINS ----------
+create table public.admins (
+    user_id uuid primary key references auth.users on delete cascade,
+    role text not null default 'admin' check (role in ('admin', 'editor')),
+    created_at timestamptz not null default now()
+);
+alter table public.admins enable row level security;
+create policy admins_select_own on public.admins for select using (auth.uid() = user_id);
+create policy admins_insert_admin on public.admins for insert with check (auth.uid() IN (SELECT user_id FROM public.admins));
+create policy admins_delete_admin on public.admins for delete using (auth.uid() IN (SELECT user_id FROM public.admins));
+
 -- ---------- PROFILES ----------
 create table public.profiles (
     id uuid primary key references auth.users on delete cascade,
@@ -89,7 +100,7 @@ from public.comment_votes
 group by comment_id;
 grant select on public.comment_scores to anon, authenticated;
 
--- ---------- FEEDBACK (anonymous) ----------
+-- ---------- FEEDBACK (anonymous, rate-limited) ----------
 create table public.feedback (
     id bigserial primary key,
     article_slug text,
@@ -99,7 +110,9 @@ create table public.feedback (
     created_at timestamptz not null default now()
 );
 alter table public.feedback enable row level security;
-create policy feedback_insert_anon on public.feedback for insert with check (true);
+create policy feedback_insert_anon on public.feedback for insert with check (
+    (SELECT count(*) FROM public.feedback WHERE created_at > now() - interval '1 hour') < 10
+);
 
 -- ---------- SUBSCRIBERS (newsletter) ----------
 create table public.subscribers (
@@ -128,7 +141,6 @@ create index articles_slug_idx on public.articles (slug);
 create index articles_published_idx on public.articles (published, created_at desc);
 alter table public.articles enable row level security;
 create policy articles_select_public on public.articles for select using (published = true);
-create policy articles_select_all on public.articles for select using (true);
-create policy articles_insert_admin on public.articles for insert with check (true);
-create policy articles_update_admin on public.articles for update using (true) with check (true);
-create policy articles_delete_admin on public.articles for delete using (true);
+create policy articles_insert_admin on public.articles for insert with check (auth.uid() IN (SELECT user_id FROM public.admins));
+create policy articles_update_admin on public.articles for update using (auth.uid() IN (SELECT user_id FROM public.admins)) with check (auth.uid() IN (SELECT user_id FROM public.admins));
+create policy articles_delete_admin on public.articles for delete using (auth.uid() IN (SELECT user_id FROM public.admins));

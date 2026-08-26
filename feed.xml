@@ -6,7 +6,16 @@
     <description>Українська Соціалістична Ліга — соціалізм, солідарність, права робітників. Статті та публікації.</description>
     <language>uk</language>
     <atom:link href="https://ukrsocleague.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 02 Aug 2026 12:00:00 -0000</lastBuildDate>
+    <lastBuildDate>Tue, 26 Aug 2026 12:00:00 -0000</lastBuildDate>
+    <item>
+      <title>Маніфест Цифрового Визволення</title>
+      <link>https://ukrsocleague.org/articles/manifest-gnu.htm</link>
+      <guid isPermaLink="true">https://ukrsocleague.org/articles/manifest-gnu.htm</guid>
+      <pubDate>Tue, 26 Aug 2026 12:00:00 -0000</pubDate>
+      <category>Цифрові права</category>
+      <description>Маніфест Цифрового Визволення — декларація про свободу програмного забезпечення та цифрові права.</description>
+      <enclosure url="https://ukrsocleague.org/pictures/manifest-gnu.png" type="image/png" length="0"/>
+    </item>
     <item>
       <title>Темне Просвітництво</title>
       <link>https://ukrsocleague.org/articles/temneprosvitnitstvo.htm</link>

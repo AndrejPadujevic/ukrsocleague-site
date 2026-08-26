@@ -3,6 +3,15 @@
 // (url — відносний шлях від кореня сайту).
 var USL_ARCHIVE = [
     {
+        url: "articles/manifest-gnu.htm",
+        minutes: 12,
+        title: "Маніфест Цифрового Визволення",
+        date: "26 Серпня, 2026",
+        tag: "Цифрові права",
+        description: "Маніфест Цифрового Визволення — декларація про свободу програмного забезпечення та цифрові права.",
+        image: "pictures/manifest-gnu.png"
+    },
+    {
         url: "articles/temneprosvitnitstvo.htm",
         minutes: 7,
         title: "Темне Просвітництво",

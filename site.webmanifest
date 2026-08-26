@@ -11,6 +11,7 @@
   "dir": "ltr",
   "theme_color": "#CC0000",
   "background_color": "#f5f5f5",
+  "categories": ["politics", "news", "education"],
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -29,6 +30,22 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/pictures/preview.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Головна сторінка УСЛ"
+    },
+    {
+      "src": "/pictures/preview.jpg",
+      "sizes": "720x1280",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Головна сторінка УСЛ"
     }
   ],
   "shortcuts": [

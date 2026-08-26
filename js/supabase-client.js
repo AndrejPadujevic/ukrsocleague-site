@@ -134,8 +134,14 @@
             var c = state.client;
             if (!c) return null;
             try {
-                var s = c.auth.getSession();
-                if (s && s.data && s.data.session && s.data.session.user) return s.data.session.user;
+                var session = c.auth.getSession();
+                if (session && typeof session.then === 'function') {
+                    session.then(function(result) {
+                        window.SB._currentUser = result && result.data && result.data.session && result.data.session.user || null;
+                    });
+                    return window.SB._currentUser || null;
+                }
+                if (session && session.data && session.data.session && session.data.session.user) return session.data.session.user;
             } catch (e) {}
             return null;
         },

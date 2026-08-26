@@ -140,32 +140,7 @@ function applyDeviceSettings() {
 function applyDeviceOptimizations(device) {
     // Mobile-specific optimizations
     if (device.isMobile) {
-        // Optimize images for mobile
         optimizeImagesForMobile();
-        
-        // Enable mobile-specific features
-        enableMobileFeatures();
-    }
-    
-    // Tablet-specific optimizations
-    if (device.isTablet) {
-        // Optimize images for tablet
-        optimizeImagesForTablet();
-    }
-    
-    // Desktop-specific optimizations
-    if (device.isDesktop) {
-        // Desktop-specific features are handled by CSS
-    }
-    
-    // Touch device optimizations
-    if (device.isTouch) {
-        // Touch features are handled by CSS
-    }
-    
-    // Reduced motion optimizations
-    if (device.prefersReducedMotion) {
-        // Handled by CSS
     }
     
     // Slow connection optimizations
@@ -185,21 +160,6 @@ function optimizeImagesForMobile() {
     });
 }
 
-function enableMobileFeatures() {
-    // Mobile-specific features are handled by CSS
-}
-
-// Tablet-specific optimizations
-function optimizeImagesForTablet() {
-    // Load medium-quality images for tablets
-    const images = document.querySelectorAll('img[data-src-medium]');
-    images.forEach(img => {
-        const mediumSrc = img.getAttribute('data-src-medium');
-        if (mediumSrc && !img.complete) {
-            img.setAttribute('src', mediumSrc);
-        }
-    });
-}
 
 // Slow connection optimizations
 function optimizeForSlowConnection() {
@@ -229,36 +189,6 @@ function optimizeForSlowConnection() {
     });
 }
 
-// Handle window resize
-function handleResize() {
-    const device = detectDevice();
-    
-    // Update body classes on resize
-    if (device.isMobile) {
-        document.body.classList.add('device-mobile');
-        document.body.classList.remove('device-tablet', 'device-desktop');
-    } else if (device.isTablet) {
-        document.body.classList.add('device-tablet');
-        document.body.classList.remove('device-mobile', 'device-desktop');
-    } else {
-        document.body.classList.add('device-desktop');
-        document.body.classList.remove('device-mobile', 'device-tablet');
-    }
-    
-    // Update orientation classes
-    if (device.isPortrait) {
-        document.body.classList.add('portrait-mode');
-        document.body.classList.remove('landscape-mode');
-    } else {
-        document.body.classList.add('landscape-mode');
-        document.body.classList.remove('portrait-mode');
-    }
-    
-    // Update data attributes
-    document.body.setAttribute('data-device-width', device.width);
-    document.body.setAttribute('data-device-height', device.height);
-}
-
 // Initialize device detection
 function initDeviceDetection() {
     // Apply initial device settings
@@ -280,7 +210,6 @@ function initDeviceDetection() {
     window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
         if (e.matches) {
             document.body.classList.add('reduced-motion');
-            disableAnimations();
         } else {
             document.body.classList.remove('reduced-motion');
         }
@@ -296,8 +225,6 @@ function initDeviceDetection() {
         }
     });
     
-    // Add device info to console for debugging
-    console.log('Device Detection Initialized:', detectDevice());
 }
 
 // Run on DOM ready

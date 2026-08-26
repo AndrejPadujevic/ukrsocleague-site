@@ -8,7 +8,7 @@
  */
 'use strict';
 
-var CACHE = 'usl-v3';
+var CACHE = 'usl-v4';
 
 var PRECACHE_URLS = [
   '/',
@@ -34,6 +34,8 @@ var PRECACHE_URLS = [
   '/js/theme.js',
   '/js/search.js',
   '/js/engagement.js',
+  '/js/consent.js',
+  '/js/translate.js',
   '/site.webmanifest',
   '/robots.txt',
   '/feed.xml',
@@ -47,49 +49,7 @@ var PRECACHE_URLS = [
   '/pictures/logo-256.webp',
   '/pictures/logo-256.png',
   '/pictures/logo_w.png',
-  '/pictures/maskable-icon-512.png',
-  '/pictures/temneprosvitnitstvo.jpg',
-  '/pictures/temneprosvitnitstvo.webp',
-  '/pictures/protestausl.jpg',
-  '/pictures/protestausl.webp',
-  '/pictures/protestpic2.jpg',
-  '/pictures/protestpic2.webp',
-  '/pictures/protestpic1.jpg',
-  '/pictures/protestpic1.webp',
-  '/pictures/zbirka.jpg',
-  '/pictures/zbirka.webp',
-  '/pictures/gegemonia.jpg',
-  '/pictures/gegemonia.webp',
-  '/pictures/USLlogobig.png',
-  '/pictures/USLlogobig.webp',
-  '/pictures/migracia1.jpg',
-  '/pictures/migracia1.webp',
-  '/pictures/interview_artil.jpg',
-  '/pictures/interview_artil.webp',
-  '/pictures/mykhailo_grushevsky.jpg',
-  '/pictures/mykhailo_grushevsky.webp',
-  '/pictures/ukrresolucia.jpg',
-  '/pictures/ukrresolucia.webp',
-  '/pictures/vasylchumak.png',
-  '/pictures/vasylchumak.webp',
-  '/pictures/disco.png',
-  '/pictures/disco.webp',
-  '/pictures/biglogomsl.png',
-  '/pictures/biglogomsl.webp',
-  '/pictures/rukyhetvidrozavi.jpg',
-  '/pictures/rukyhetvidrozavi.webp',
-  '/pictures/preview.jpg',
-  '/pictures/preview.webp',
-  '/pictures/vijnavirani.jpg',
-  '/pictures/vijnavirani.webp',
-  '/pictures/gendernaresolucia.jpg',
-  '/pictures/gendernaresolucia.webp',
-  '/pictures/ISL_feminism1.jpg',
-  '/pictures/ISL_feminism1.webp',
-  '/pictures/andrij_richickij.jpg',
-  '/pictures/andrij_richickij.webp',
-  '/pictures/ISL_ecologia1.jpg',
-  '/pictures/ISL_ecologia1.webp'
+  '/pictures/maskable-icon-512.png'
 ];
 
 self.addEventListener('install', function(event) {

@@ -1,41 +1,27 @@
 /**
  * УКРАЇНСЬКА СОЦІАЛІСТИЧНА ЛІГА
- * Admin panel: password protection + article CRUD with Markdown
+ * Admin panel: Supabase Auth + article CRUD with Markdown
  */
 (function() {
     'use strict';
 
-    var ADMIN_PASSWORD = 'usl2026'; // Change this in production
-    var SESSION_KEY = 'usl-admin-session';
     var supabase = null;
 
-    // Check session
+    // Check session via Supabase
     function isLoggedIn() {
-        try {
-            return localStorage.getItem(SESSION_KEY) === 'true';
-        } catch (e) {
-            return false;
-        }
+        return window.SB && window.SB.user() !== null;
     }
 
-    // Login
-    function login(password) {
-        if (password === ADMIN_PASSWORD) {
-            try {
-                localStorage.setItem(SESSION_KEY, 'true');
-            } catch (e) {}
-            showDashboard();
-            return true;
-        }
-        return false;
+    // Login via Supabase Magic Link
+    function login(email) {
+        return window.SB.login(email);
     }
 
     // Logout
     function logout() {
-        try {
-            localStorage.removeItem(SESSION_KEY);
-        } catch (e) {}
-        showLogin();
+        window.SB.logout().then(function() {
+            showLogin();
+        });
     }
 
     // Show login screen
@@ -51,22 +37,13 @@
         loadArticles();
     }
 
-    // Initialize Supabase
+    // Initialize Supabase via shared client
     function initSupabase() {
-        if (!window.USL_CONFIG || !window.USL_CONFIG.SUPABASE_URL || !window.USL_CONFIG.SUPABASE_ANON_KEY) {
+        if (!window.SB || !window.SB.isConfigured()) {
             console.error('Supabase not configured');
-            return null;
+            return;
         }
-
-        if (window.supabase) {
-            supabase = window.supabase.createClient(
-                window.USL_CONFIG.SUPABASE_URL,
-                window.USL_CONFIG.SUPABASE_ANON_KEY
-            );
-        } else {
-            console.error('Supabase client not loaded');
-        }
-        return supabase;
+        supabase = window.SB.client();
     }
 
     // Load articles from Supabase
@@ -239,16 +216,20 @@
     function init() {
         initSupabase();
 
-        // Login form
+        // Login form - email-based via Supabase Auth
         document.getElementById('login-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            var password = document.getElementById('admin-password').value;
-            if (!login(password)) {
-                document.getElementById('login-error').textContent = 'Невірний пароль';
-            } else {
-                document.getElementById('login-error').textContent = '';
-                document.getElementById('admin-password').value = '';
+            var email = document.getElementById('admin-email').value.trim();
+            if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+                document.getElementById('login-error').textContent = 'Введіть коректну email-адресу';
+                return;
             }
+            document.getElementById('login-error').textContent = 'Надсилаємо посилання для входу…';
+            login(email).then(function() {
+                document.getElementById('login-error').textContent = 'Перевірте пошту — посилання для входу надіслано.';
+            }).catch(function() {
+                document.getElementById('login-error').textContent = 'Помилка входу. Спробуйте пізніше.';
+            });
         });
 
         // Logout
@@ -259,11 +240,20 @@
         document.getElementById('cancel-btn').addEventListener('click', resetForm);
 
         // Check login state
-        if (isLoggedIn()) {
-            showDashboard();
-        } else {
-            showLogin();
-        }
+        window.SB.ready(function() {
+            if (isLoggedIn()) {
+                showDashboard();
+            } else {
+                showLogin();
+            }
+        });
+
+        // Listen for auth changes
+        window.SB.onAuth(function() {
+            if (isLoggedIn()) {
+                showDashboard();
+            }
+        });
     }
 
     if (document.readyState === 'loading') {

@@ -6,10 +6,16 @@
 (function() {
     'use strict';
 
+    function currentBase() {
+        var path = window.location.pathname;
+        if (path.indexOf('/articles/') !== -1) return '../';
+        return '';
+    }
+
     function ensureData(cb) {
         if (window.USL_ARCHIVE) { cb(window.USL_ARCHIVE); return; }
         var s = document.createElement('script');
-        s.src = 'js/archive-data.js';
+        s.src = currentBase() + 'js/archive-data.js';
         s.onload = function() { cb(window.USL_ARCHIVE || []); };
         s.onerror = function() { cb([]); };
         document.head.appendChild(s);
