@@ -147,7 +147,7 @@
     }
 
     function mountDropdowns() {
-        document.querySelectorAll('.side-theme, .footer-theme').forEach(function(c) {
+        document.querySelectorAll('.side-theme, .footer-theme, .nav-theme').forEach(function(c) {
             if (c.querySelector('.theme-dropdown-wrapper')) return;
             c.appendChild(createDropdown());
         });

@@ -3732,6 +3732,14 @@ body.dark-mode-preferred .install-guide-box {
     margin-top: var(--spacing-sm);
     text-align: center;
 }
+.nav-theme {
+    display: inline-flex;
+    align-items: center;
+}
+.nav-theme .theme-dropdown {
+    bottom: 100%;
+    top: auto;
+}
 
 /* ============================================
    WEBAPP: NEWSLETTER (FOOTER)

@@ -163,6 +163,7 @@
             '        <div class="nav-container">\n' +
             '            ' + navHtml() + '\n' +
             '            <button type="button" class="nav-search-btn" id="nav-search-btn" aria-label="Пошук по сайту">Пошук</button>\n' +
+            '            <div class="nav-theme"></div>\n' +
             '            <button type="button" class="nav-item dropdown-toggle" aria-expanded="false" aria-controls="side-menu">МЕНЮ ▼</button>\n' +
             '        </div>\n' +
             '    </nav>\n' +
